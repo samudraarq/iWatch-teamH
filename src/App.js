@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Carousel from "./components/Carousel/Carousel";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="teamh-frontend">
-      <Carousel />
+      <Home />
     </div>
   );
 }
