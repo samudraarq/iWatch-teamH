@@ -1,6 +1,5 @@
 .container {
-  max-width: 124rem;
-  margin: 0 auto;
+  max-width: 100%;
 }
 
 .image {
