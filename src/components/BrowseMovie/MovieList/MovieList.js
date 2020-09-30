@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ChangePage from "../ChangePage/ChangePage";
 import styles from "./MovieList.module.css";
 
 const MovieList = () => {
@@ -80,6 +81,7 @@ const MovieList = () => {
       genre: "action",
     },
   ]);
+  const [maxPage, setMaxPage] = useState(100);
 
   const { category } = useParams();
 
@@ -91,7 +93,16 @@ const MovieList = () => {
     </Link>
   ));
 
-  return <div className={styles.listContainer}>{movRender}</div>;
+  const handlePageChange = (e) => {
+    console.log(e.selected);
+  };
+
+  return (
+    <>
+      <div className={styles.listContainer}>{movRender}</div>
+      <ChangePage pageChange={handlePageChange} maxPage={maxPage} />
+    </>
+  );
 };
 
 export default MovieList;
