@@ -1,0 +1,27 @@
+.overviewContainer {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: 3.2rem;
+  color: #121212;
+}
+
+.content {
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: #121212;
+}
+
+.list {
+  font-size: 1.6rem;
+  color: #121212;
+}
+
+.list li {
+  list-style: none;
+  margin-bottom: 1rem;
+}
