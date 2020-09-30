@@ -1,0 +1,29 @@
+.paginationContainer {
+  max-width: 80rem;
+  margin: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 4rem;
+}
+
+.pagination > li {
+  padding: 1rem;
+  list-style: none;
+  border-radius: 0.5rem;
+}
+
+.pagination > li > a {
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.active {
+  background-color: salmon;
+  color: white;
+}
