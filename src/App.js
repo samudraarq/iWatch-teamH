@@ -1,8 +1,13 @@
 import React from "react";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-  return <div className="teamh-frontend">Hello World!</div>;
+  return (
+    <div className="teamh-frontend">
+      <Home />
+    </div>
+  );
 }
 
 export default App;
