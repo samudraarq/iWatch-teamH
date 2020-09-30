@@ -86,7 +86,11 @@ const MovieList = () => {
   const { category } = useParams();
 
   const movRender = movies.map((movie, idx) => (
-    <Link to={`/movie/details/${idx}`} key={idx} className={styles.movie}>
+    <Link
+      to={`/movie/details/${idx}/overview`}
+      key={idx}
+      className={styles.movie}
+    >
       <img src={movie.img} alt="movie poster" className={styles.image} />
       <p className={styles.title}>{movie.title}</p>
       <p className={styles.genre}>{movie.genre}</p>
