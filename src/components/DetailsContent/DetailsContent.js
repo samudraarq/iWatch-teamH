@@ -4,6 +4,7 @@ import DetailsChar from "./DetailsChar/DetailsChar";
 import styles from "./DetailsContent.module.css";
 import DetailsNav from "./DetailsNav/DetailsNav";
 import DetailsOverview from "./DetailsOverview/DetailsOverview";
+import DetailsReview from "./DetailsReview/DetailsReview";
 
 const DetailsContent = ({ movId }) => {
   return (
@@ -14,6 +15,9 @@ const DetailsContent = ({ movId }) => {
       </Route>
       <Route path="/movie/details/:id/characters">
         <DetailsChar />
+      </Route>
+      <Route path="/movie/details/:id/reviews">
+        <DetailsReview />
       </Route>
     </div>
   );
