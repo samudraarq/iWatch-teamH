@@ -39,7 +39,7 @@ const InputReview = () => {
             placeholder="Input a review"
           />
           <button onClick={handleClick} className={styles.btn}>
-            Add review
+            Add a review
           </button>
         </form>
       </div>
