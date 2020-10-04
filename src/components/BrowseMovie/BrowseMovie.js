@@ -17,7 +17,7 @@ const BrowseMovie = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Browse by category</h2>
       <CategorySelect categories={categories} />
-      <Route path="/movies/:category">
+      <Route path="/movies/browse/:category">
         <MovieList />
       </Route>
     </div>

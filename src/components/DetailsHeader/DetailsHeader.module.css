@@ -1,0 +1,67 @@
+.backdrop {
+  height: 50rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  max-width: 124rem;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.title {
+  font-size: 4.8rem;
+  text-transform: uppercase;
+}
+
+.reviews {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.rating {
+  font-size: 3rem;
+  margin-right: 2rem;
+}
+
+.reviewsNumber {
+  font-size: 1.6rem;
+}
+
+.overview {
+  max-width: 70rem;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  line-height: 150%;
+}
+
+.btnGroup {
+  margin-top: 4rem;
+}
+
+.trailerLink {
+  margin-right: 2rem;
+  font-size: 1.6rem;
+  outline: none;
+  padding: 1.5rem 4rem;
+  background-color: salmon;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.watchList {
+  font-size: 1.6rem;
+  color: inherit;
+  outline: none;
+  padding: 1.5rem 4rem;
+  border-radius: 1rem;
+  border: 1px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
+}

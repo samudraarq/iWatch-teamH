@@ -1,15 +1,24 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { StylesProvider } from "@material-ui/core/styles";
 import "./App.css";
 import Home from "./pages/Home";
+import MovieDetails from "./pages/MovieDetails";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Route path="/">
-        <Home />
-      </Route>
-    </BrowserRouter>
+    <StylesProvider injectFirst>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/movie/details/:id">
+            <MovieDetails />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </StylesProvider>
   );
 }
 
