@@ -1,0 +1,38 @@
+.logoAndDesc{
+    display: flex;
+    flex-direction: column;    
+    width: 20rem;    
+}
+.container{
+    width: 70rem;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin:auto;    
+    padding-top:2rem;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.downloadSocmed img{
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    margin:5px;
+}
+
+.downloadOption img{
+    width: 12rem;
+    height: 5rem;
+    object-fit: contain;
+    margin:5px;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 100rem; */
+}
