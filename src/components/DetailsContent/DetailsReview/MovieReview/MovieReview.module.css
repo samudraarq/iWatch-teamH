@@ -31,3 +31,10 @@
 .rating {
   margin-bottom: 0.5rem;
 }
+
+.loading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 4rem 0;
+  text-align: center;
+}

@@ -2,10 +2,12 @@ import { Rating } from "@material-ui/lab";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroller";
 import styles from "./MovieReview.module.css";
 
 const MovieReview = () => {
   const [reviews, setReviews] = useState([]);
+  const [hasMoreData, setHasMoreData] = useState(true);
 
   const generateData = (num) => {
     const data = [];
@@ -23,11 +25,25 @@ const MovieReview = () => {
   };
 
   useEffect(() => {
-    setReviews(generateData(20));
-  });
+    setReviews(generateData(2));
+  }, []);
 
-  const movieReviewList = reviews.map((review, idx) => (
-    <div className={styles.reviewContainer} key={idx}>
+  const fetchMoreData = (e) => {
+    // e = page from 1
+    console.log(e);
+    const maxPage = 3;
+    if (e < maxPage) {
+      const newData = [...reviews, ...generateData(2)];
+      setTimeout(() => {
+        setReviews(newData);
+      }, 2000);
+    } else {
+      setHasMoreData(false);
+    }
+  };
+
+  const movieReviewList = reviews.map((review) => (
+    <div className={styles.reviewContainer} key={Math.random()}>
       <img src={review.img} alt="profile picture" />
       <div className={styles.review}>
         <p className={styles.name}>{review.name}</p>
@@ -44,7 +60,23 @@ const MovieReview = () => {
     </div>
   ));
 
-  return <div>{movieReviewList}</div>;
+  return (
+    <div>
+      <InfiniteScroll
+        initialLoad={false}
+        pageStart={0}
+        loadMore={fetchMoreData}
+        hasMore={hasMoreData}
+        loader={
+          <div key="0" className={styles.loading}>
+            Loading ...
+          </div>
+        }
+      >
+        {movieReviewList}
+      </InfiniteScroll>
+    </div>
+  );
 };
 
 export default MovieReview;
