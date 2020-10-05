@@ -6,11 +6,11 @@ const CategorySelect = ({ categories }) => {
   const list = categories.map((category, idx) => (
     <NavLink
       key={idx}
-      to={`/movies/browse/${category}`}
+      to={`/movies/browse/${category.link}`}
       className={styles.link}
       activeClassName={styles.active}
     >
-      <span>{category}</span>
+      <span>{category.name}</span>
     </NavLink>
   ));
 

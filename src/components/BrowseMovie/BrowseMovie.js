@@ -6,11 +6,10 @@ import MovieList from "./MovieList/MovieList";
 
 const BrowseMovie = () => {
   const [categories, setCategories] = useState([
-    "all",
-    "action",
-    "comedy",
-    "horor",
-    "anime",
+    { name: "Now Playing", link: "now_playing" },
+    { name: "Popular", link: "popular" },
+    { name: "Top Rated", link: "top_rated" },
+    { name: "Upcoming", link: "upcoming" },
   ]);
 
   return (

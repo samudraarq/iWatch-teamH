@@ -14,7 +14,7 @@ const MovieList = () => {
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}`
+        `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}`
       );
       const result = await res.data;
       console.log(result.results);
@@ -22,7 +22,7 @@ const MovieList = () => {
       setMovies(result.results);
     };
     getMovies();
-  }, [currentPage]);
+  }, [currentPage, category]);
 
   const movRender = movies.map((movie) => (
     <Link
