@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SignUp from './SignUp/SignUp';
+import SignUpToModal from './SignUp/SignUptoModal';
 import styles from "./Navbar.module.css"
 import LogoMilan from '../LogoMilan/LogoMilan';
 
@@ -8,9 +8,9 @@ const Navbar = () => {
         <React.Fragment>
             <div className={styles.container}>
                 <LogoMilan />
-                <input type="text" value="Search"></input>                     
+                <input type="text" ></input>                     
                 {/* <SignUp />             */}
-                <SignUp />
+                <SignUpToModal />
             </div>
         </React.Fragment>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import LogoMilan from '../LogoMilan/LogoMilan'
 import styles from './Modal.module.css'
 
-const Modal = () => {
+const ModalMilan = () => {
     return (
         <div className={styles.modalContainer}>
             <LogoMilan />
@@ -28,4 +28,4 @@ const Modal = () => {
         </div>
     )
 }
-export default Modal
+export default ModalMilan
