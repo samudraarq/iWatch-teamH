@@ -4,7 +4,7 @@ import axios from "axios";
 import ChangePage from "../ChangePage/ChangePage";
 import styles from "./MovieList.module.css";
 
-const MovieList = () => {
+const MovieList = ({ categories }) => {
   const [movies, setMovies] = useState([]);
   const [maxPage, setMaxPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +14,7 @@ const MovieList = () => {
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}&with_genres=${category}`
       );
       const result = await res.data;
       console.log(result.results);
@@ -24,21 +24,31 @@ const MovieList = () => {
     getMovies();
   }, [currentPage, category]);
 
-  const movRender = movies.map((movie) => (
-    <Link
-      to={`/movie/details/${movie.id}/overview`}
-      key={movie.id}
-      className={styles.movie}
-    >
-      <img
-        src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
-        alt="movie poster"
-        className={styles.image}
-      />
-      <p className={styles.title}>{movie.title}</p>
-      {/* <p className={styles.genre}>{movie.genre}</p> */}
-    </Link>
-  ));
+  const movRender = movies.map((movie) => {
+    const genres = movie.genre_ids.map((id) =>
+      categories.find((obj) => obj.id === id)
+    );
+
+    return (
+      <Link
+        to={`/movie/details/${movie.id}/overview`}
+        key={movie.id}
+        className={styles.movie}
+      >
+        <img
+          src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+          alt="movie poster"
+          className={styles.image}
+        />
+        <p className={styles.title}>{movie.title}</p>
+        <div className={styles.genre}>
+          {genres?.map((genre, idx) => (
+            <span key={idx}>{genre?.name}</span>
+          ))}
+        </div>
+      </Link>
+    );
+  });
 
   const handlePageChange = (e) => {
     const selectedPage = e.selected + 1;

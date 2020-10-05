@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
+import axios from "axios";
 import "swiper/swiper-bundle.min.css";
 import styles from "./Carousel.module.css";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Carousel = () => {
-  const slides = [];
-  for (let i = 0; i < 5; i += 1) {
-    slides.push(
-      <SwiperSlide key={`slide-${i}`}>
-        <img
-          className={styles.image}
-          src={`https://picsum.photos/id/${i + 1}/500/300`}
-          alt={`Slide ${i}`}
-        />
-      </SwiperSlide>
-    );
-  }
+  const [movies, setMovies] = useState([{}, {}, {}, {}, {}]);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      );
+      const result = await res.data;
+      setMovies(result.results.slice(0, 5));
+    };
+    getMovies();
+  }, []);
+
+  const slides = movies.map((movie, idx) => (
+    <SwiperSlide key={idx}>
+      <img
+        className={styles.image}
+        src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
+        alt={"movie poster"}
+      />
+    </SwiperSlide>
+  ));
+
   return (
     <div className={styles.container}>
       <Swiper

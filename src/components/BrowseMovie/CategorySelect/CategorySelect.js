@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 import styles from "./CategorySelect.module.css";
 
 const CategorySelect = ({ categories }) => {
-  const list = categories.map((category, idx) => (
+  const list = categories.map((category) => (
     <NavLink
-      key={idx}
-      to={`/movies/browse/${category.link}`}
+      key={category.id}
+      to={`/movies/browse/${category.id}`}
       className={styles.link}
       activeClassName={styles.active}
     >
