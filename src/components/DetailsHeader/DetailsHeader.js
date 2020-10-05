@@ -29,12 +29,7 @@ const DetailsHeader = ({ movie }) => {
           />
           <span className={styles.reviewsNumber}>{reviewsNumber} reviews</span>
         </div>
-        <p className={styles.overview}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A
-          consequuntur ea suscipit accusamus laudantium delectus doloribus quis
-          corporis ipsam velit perferendis adipisci, labore consectetur
-          laboriosam omnis commodi quo excepturi veniam.
-        </p>
+        <p className={styles.overview}>{movie.overview}</p>
         <div className={styles.btnGroup}>
           <a className={styles.trailerLink}>Watch Trailer</a>
           <button className={styles.watchList}>Add to Watchlist</button>
