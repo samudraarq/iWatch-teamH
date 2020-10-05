@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import styles from "./BrowseMovie.module.css";
 import CategorySelect from "./CategorySelect/CategorySelect";
@@ -23,9 +23,14 @@ const BrowseMovie = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Browse by category</h2>
       <CategorySelect categories={categories} />
-      <Route path="/movies/browse/:category">
-        <MovieList categories={categories} />
-      </Route>
+      <Switch>
+        <Route path="/movies/browse/:category">
+          <MovieList categories={categories} />
+        </Route>
+        <Route path="/all">
+          <MovieList categories={categories} all />
+        </Route>
+      </Switch>
     </div>
   );
 };

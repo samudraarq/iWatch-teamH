@@ -14,7 +14,7 @@ function App() {
             <MovieDetails />
           </Route>
           <Route path="/">
-            <Redirect to="/movies/browse/now_playing" />
+            <Redirect to="/all" />
             <Home />
           </Route>
         </Switch>

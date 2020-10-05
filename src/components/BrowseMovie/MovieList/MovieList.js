@@ -4,7 +4,7 @@ import axios from "axios";
 import ChangePage from "../ChangePage/ChangePage";
 import styles from "./MovieList.module.css";
 
-const MovieList = ({ categories }) => {
+const MovieList = ({ categories, all }) => {
   const [movies, setMovies] = useState([]);
   const [maxPage, setMaxPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,13 +13,23 @@ const MovieList = ({ categories }) => {
 
   useEffect(() => {
     const getMovies = async () => {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}&with_genres=${category}`
-      );
-      const result = await res.data;
-      console.log(result.results);
-      setMaxPage(result.total_pages);
-      setMovies(result.results);
+      if (all) {
+        const res = await axios.get(
+          `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}`
+        );
+        const result = await res.data;
+        console.log(result.results);
+        setMaxPage(result.total_pages);
+        setMovies(result.results);
+      } else {
+        const res = await axios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}&with_genres=${category}`
+        );
+        const result = await res.data;
+        console.log(result.results);
+        setMaxPage(result.total_pages);
+        setMovies(result.results);
+      }
     };
     getMovies();
   }, [currentPage, category]);

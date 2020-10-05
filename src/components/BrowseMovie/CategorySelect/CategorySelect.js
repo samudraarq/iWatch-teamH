@@ -14,7 +14,18 @@ const CategorySelect = ({ categories }) => {
     </NavLink>
   ));
 
-  return <div className={styles.browseContainer}>{list}</div>;
+  return (
+    <div className={styles.browseContainer}>
+      <NavLink
+        to={`/all`}
+        className={styles.link}
+        activeClassName={styles.active}
+      >
+        <span>All</span>
+      </NavLink>
+      {list}
+    </div>
+  );
 };
 
 export default CategorySelect;
