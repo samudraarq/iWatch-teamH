@@ -6,12 +6,12 @@ import DetailsNav from "./DetailsNav/DetailsNav";
 import DetailsOverview from "./DetailsOverview/DetailsOverview";
 import DetailsReview from "./DetailsReview/DetailsReview";
 
-const DetailsContent = ({ movId }) => {
+const DetailsContent = ({ movId, movie }) => {
   return (
     <div className={styles.container}>
       <DetailsNav movId={movId} />
       <Route path="/movie/details/:id/overview">
-        <DetailsOverview />
+        <DetailsOverview movie={movie} />
       </Route>
       <Route path="/movie/details/:id/characters">
         <DetailsChar />
