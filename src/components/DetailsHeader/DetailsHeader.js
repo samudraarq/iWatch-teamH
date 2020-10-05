@@ -2,14 +2,13 @@ import React from "react";
 import styles from "./DetailsHeader.module.css";
 import Rating from "@material-ui/lab/Rating";
 
-const DetailsHeader = () => {
-  const backdropUrl =
-    "url(https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)";
-  const movieTitle = "Saint Seiya";
-  const movieRating = 4.2;
-  const reviewsNumber = 2200;
+const DetailsHeader = ({ movie }) => {
+  const backdropUrl = `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`;
+  const movieTitle = movie.title;
+  const movieRating = movie.vote_average / 2;
+  const reviewsNumber = movie.vote_count;
 
-  return (
+  const bdrop = (
     <div
       className={styles.backdrop}
       style={{
@@ -43,6 +42,8 @@ const DetailsHeader = () => {
       </div>
     </div>
   );
+
+  return <>{movie.title && bdrop}</>;
 };
 
 export default DetailsHeader;
