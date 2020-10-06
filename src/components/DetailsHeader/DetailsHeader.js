@@ -56,6 +56,8 @@ const DetailsHeader = ({ movie }) => {
             <a
               className={styles.trailerLink}
               href={"https://www.youtube.com/watch?v=" + youtubeLink.key}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Watch Trailer
             </a>
