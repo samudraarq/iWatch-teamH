@@ -53,6 +53,7 @@
   background-color: salmon;
   border-radius: 1rem;
   cursor: pointer;
+  display: inline-block;
 }
 
 .watchList {
