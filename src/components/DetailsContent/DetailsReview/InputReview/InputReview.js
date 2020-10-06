@@ -11,7 +11,7 @@ const InputReview = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(text);
+    // console.log(text);
   };
 
   return (
@@ -28,7 +28,7 @@ const InputReview = () => {
           size="large"
           precision={0.5}
           onChange={(event, newValue) => {
-            console.log(newValue);
+            // console.log(newValue);
           }}
         />
         <form className={styles.form}>

@@ -30,7 +30,7 @@ const MovieReview = () => {
 
   const fetchMoreData = (e) => {
     // e = page from 1
-    console.log(e);
+    // console.log(e);
     const maxPage = 3;
     if (e < maxPage) {
       const newData = [...reviews, ...generateData(2)];
@@ -44,7 +44,7 @@ const MovieReview = () => {
 
   const movieReviewList = reviews.map((review) => (
     <div className={styles.reviewContainer} key={Math.random()}>
-      <img src={review.img} alt="profile picture" />
+      <img src={review.img} alt={review.name} />
       <div className={styles.review}>
         <p className={styles.name}>{review.name}</p>
         <span className={styles.rating}>

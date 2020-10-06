@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./DetailsHeader.module.css";
 import Rating from "@material-ui/lab/Rating";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-const DetailsHeader = () => {
-  const backdropUrl =
-    "url(https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)";
-  const movieTitle = "Saint Seiya";
-  const movieRating = 4.2;
-  const reviewsNumber = 2200;
+const DetailsHeader = ({ movie }) => {
+  const [trailer, setTrailer] = useState([]);
 
-  return (
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      );
+      const result = await res.data;
+      // console.log(result);
+      setTrailer(result.results);
+    };
+    getMovies();
+  }, [id]);
+
+  const backdropUrl = `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`;
+  const movieTitle = movie.title;
+  const movieRating = movie.vote_average / 2;
+  const reviewsNumber = movie.vote_count;
+  const youtubeLink = trailer.find(
+    (trail) => trail.site === "YouTube" && trail.type === "Trailer"
+  );
+
+  const bdrop = (
     <div
       className={styles.backdrop}
       style={{
@@ -30,19 +50,25 @@ const DetailsHeader = () => {
           />
           <span className={styles.reviewsNumber}>{reviewsNumber} reviews</span>
         </div>
-        <p className={styles.overview}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A
-          consequuntur ea suscipit accusamus laudantium delectus doloribus quis
-          corporis ipsam velit perferendis adipisci, labore consectetur
-          laboriosam omnis commodi quo excepturi veniam.
-        </p>
+        <p className={styles.overview}>{movie.overview}</p>
         <div className={styles.btnGroup}>
-          <a className={styles.trailerLink}>Watch Trailer</a>
+          {youtubeLink && (
+            <a
+              className={styles.trailerLink}
+              href={"https://www.youtube.com/watch?v=" + youtubeLink.key}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Watch Trailer
+            </a>
+          )}
           <button className={styles.watchList}>Add to Watchlist</button>
         </div>
       </div>
     </div>
   );
+
+  return <>{movie.title && bdrop}</>;
 };
 
 export default DetailsHeader;
