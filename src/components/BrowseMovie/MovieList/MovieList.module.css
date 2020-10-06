@@ -18,6 +18,8 @@
   width: 15rem;
   object-fit: cover;
   border-radius: 5px;
+  background-color: #f0f0f0;
+  margin: auto;
 }
 
 .title {

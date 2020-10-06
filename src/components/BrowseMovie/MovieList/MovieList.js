@@ -45,11 +45,15 @@ const MovieList = ({ categories, allMovies }) => {
         key={movie.id}
         className={styles.movie}
       >
-        <img
-          src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
-          alt="movie poster"
-          className={styles.image}
-        />
+        {movie.poster_path === null ? (
+          <p className={styles.image}>No poster</p>
+        ) : (
+          <img
+            src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+            alt="movie poster"
+            className={styles.image}
+          />
+        )}
         <p className={styles.title}>{movie.title}</p>
         <div className={styles.genre}>
           {genres?.map((genre, idx) => (
