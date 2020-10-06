@@ -1,9 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import styles from "./DetailsOverview.module.css";
 
 const DetailsOverview = ({ movie }) => {
-  const { id } = useParams();
   return (
     <div className={styles.overviewContainer}>
       <h3 className={styles.title}>Synopsis</h3>

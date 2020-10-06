@@ -18,15 +18,20 @@ const DetailsChar = () => {
       setChars(result.cast);
     };
     getMovies();
-  }, []);
+  }, [id]);
 
   const listChar = chars.map((char) => (
     <div key={char.id} className={styles.chars}>
-      <img
-        src={"https://image.tmdb.org/t/p/w500/" + char.profile_path}
-        alt={char.name}
-        className={styles.image}
-      />
+      {char.profile_path === null ? (
+        <p className={styles.image}>No profile picture</p>
+      ) : (
+        <img
+          src={"https://image.tmdb.org/t/p/w500/" + char.profile_path}
+          alt={char.name}
+          className={styles.image}
+        />
+      )}
+
       <p className={styles.name}>{char.name}</p>
     </div>
   ));

@@ -4,7 +4,7 @@ import axios from "axios";
 import ChangePage from "../ChangePage/ChangePage";
 import styles from "./MovieList.module.css";
 
-const MovieList = ({ categories, all }) => {
+const MovieList = ({ categories, allMovies }) => {
   const [movies, setMovies] = useState([]);
   const [maxPage, setMaxPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +13,7 @@ const MovieList = ({ categories, all }) => {
 
   useEffect(() => {
     const getMovies = async () => {
-      if (all) {
+      if (allMovies) {
         const res = await axios.get(
           `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}`
         );
@@ -32,7 +32,7 @@ const MovieList = ({ categories, all }) => {
       }
     };
     getMovies();
-  }, [currentPage, category]);
+  }, [currentPage, category, allMovies]);
 
   const movRender = movies.map((movie) => {
     const genres = movie.genre_ids.map((id) =>

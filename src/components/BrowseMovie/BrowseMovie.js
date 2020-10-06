@@ -28,7 +28,7 @@ const BrowseMovie = () => {
           <MovieList categories={categories} />
         </Route>
         <Route path="/all">
-          <MovieList categories={categories} all />
+          <MovieList categories={categories} allMovies />
         </Route>
       </Switch>
     </div>

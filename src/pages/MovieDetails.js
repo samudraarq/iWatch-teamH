@@ -20,7 +20,7 @@ const MovieDetails = () => {
       setMovie(result);
     };
     getMovies();
-  }, []);
+  }, [id]);
 
   return (
     <div>
