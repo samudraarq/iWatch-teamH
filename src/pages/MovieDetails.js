@@ -16,7 +16,7 @@ const MovieDetails = () => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       );
       const result = await res.data;
-      console.log(result);
+      // console.log(result);
       setMovie(result);
     };
     getMovies();

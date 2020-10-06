@@ -14,7 +14,7 @@ const DetailsChar = () => {
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
       );
       const result = await res.data;
-      console.log(result.cast);
+      // console.log(result.cast);
       setChars(result.cast);
     };
     getMovies();

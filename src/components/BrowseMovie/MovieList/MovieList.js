@@ -18,7 +18,7 @@ const MovieList = ({ categories, allMovies }) => {
           `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}`
         );
         const result = await res.data;
-        console.log(result.results);
+        // console.log(result.results);
         setMaxPage(result.total_pages);
         setMovies(result.results);
       } else {
@@ -26,7 +26,7 @@ const MovieList = ({ categories, allMovies }) => {
           `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}&with_genres=${category}`
         );
         const result = await res.data;
-        console.log(result.results);
+        // console.log(result.results);
         setMaxPage(result.total_pages);
         setMovies(result.results);
       }
