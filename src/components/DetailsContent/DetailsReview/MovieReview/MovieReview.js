@@ -30,7 +30,7 @@ const MovieReview = () => {
 
   const fetchMoreData = (e) => {
     // e = page from 1
-    console.log(e);
+    // console.log(e);
     const maxPage = 3;
     if (e < maxPage) {
       const newData = [...reviews, ...generateData(2)];
