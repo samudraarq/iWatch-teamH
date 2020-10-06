@@ -4,6 +4,8 @@ import DetailsHeader from "../components/DetailsHeader/DetailsHeader";
 import DetailsContent from "../components/DetailsContent/DetailsContent";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import Navbar from "../components/NavBar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
@@ -24,8 +26,10 @@ const MovieDetails = () => {
 
   return (
     <div>
+      <Navbar />
       <DetailsHeader movie={movie} />
       <DetailsContent movId={id} movie={movie} />
+      <Footer />
     </div>
   );
 };
