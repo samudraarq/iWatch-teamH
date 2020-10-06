@@ -3,7 +3,7 @@ import React from 'react';
 const SignIn = () =>{
     return(
         <React.Fragment>
-            <button className="btn button-danger">Sign In</button>
+            <div>Sign In</div>
         </React.Fragment>
     )
 }
