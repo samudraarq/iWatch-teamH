@@ -1,12 +1,16 @@
-.container{
-    max-width:124rem;        
-    margin:auto;
-    display: flex;    
-    justify-content: space-between;
-    align-items: center;
+.container {
+  max-width: 124rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.container input{
-    width:30rem;
+.input {
+  width: 40rem;
+  height: 4rem;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  padding-left: 1rem;
+  outline: none;
 }
-
