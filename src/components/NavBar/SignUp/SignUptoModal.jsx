@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import ModalMilan from "../../Modal/Modal2";
+import ModalLogin from "../../Modal/Modal";
 import SignIn from "../SignIn/SignIn";
 import styles from "./SignUp.module.css";
 
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignUpToModal = () => {
+  const [isSignup, setIsSignup] = useState(true);
   const classes = useStyles();
 
   const [modalStyle] = useState(getModalStyle);
@@ -43,7 +45,12 @@ const SignUpToModal = () => {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <ModalMilan />
+      {isSignup ? (
+        <ModalMilan setIsSignup={setIsSignup} />
+      ) : (
+        <ModalLogin setIsSignup={setIsSignup} />
+      )}
+
       <button className="btn btn-warning" onClick={handleClose}>
         Close
       </button>
