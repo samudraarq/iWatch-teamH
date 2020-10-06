@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./DetailsHeader.module.css";
 import Rating from "@material-ui/lab/Rating";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const DetailsHeader = ({ movie }) => {
+  const [trailer, setTrailer] = useState([]);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      );
+      const result = await res.data;
+      // console.log(result);
+      setTrailer(result.results);
+    };
+    getMovies();
+  }, [id]);
+
   const backdropUrl = `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`;
   const movieTitle = movie.title;
   const movieRating = movie.vote_average / 2;
   const reviewsNumber = movie.vote_count;
+  const youtubeLink = trailer.find(
+    (trail) => trail.site === "YouTube" && trail.type === "Trailer"
+  );
 
   const bdrop = (
     <div
@@ -31,7 +52,14 @@ const DetailsHeader = ({ movie }) => {
         </div>
         <p className={styles.overview}>{movie.overview}</p>
         <div className={styles.btnGroup}>
-          <a className={styles.trailerLink}>Watch Trailer</a>
+          {youtubeLink && (
+            <a
+              className={styles.trailerLink}
+              href={"https://www.youtube.com/watch?v=" + youtubeLink.key}
+            >
+              Watch Trailer
+            </a>
+          )}
           <button className={styles.watchList}>Add to Watchlist</button>
         </div>
       </div>
