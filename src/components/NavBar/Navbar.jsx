@@ -6,14 +6,17 @@ import LogOut from './LogOut'
 import FotoProfil from './FotoProfil'
 import DropDownMenu from './DropDownMenu'
 
+
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState(false)
   const [token, setToken] = useState(localStorage.getItem('token'))
+  const [image, setImage] = useState("")
 
   useEffect(() => {
     console.log(localStorage.getItem('token'))       
     if(localStorage.getItem('token')){
       setIsLogin(true)      
+      setImage("https://cdn-2.tstatic.net/tribunnews/foto/bank/images/tes-kepribadian-gambar-pertama-11.jpg")
     }else{
       setIsLogin(false)
     }
@@ -21,6 +24,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('username')
     setIsLogin(false)
   }
 
@@ -34,7 +38,7 @@ const Navbar = () => {
           placeholder="Search movies"
         ></input>
         {/* <SignUp />             */}
-        {isLogin==false ? <SignUpToModal setIsLogin={setIsLogin}/> : <DropDownMenu />}
+        {isLogin==false ? <SignUpToModal setIsLogin={setIsLogin}/> : <DropDownMenu handleLogOut={handleLogOut} image={image}/>}
       </div>
     </React.Fragment>
   );

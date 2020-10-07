@@ -79,7 +79,8 @@ const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => {
     .then(result => {
         console.log('Success:', result);
         localStorage.setItem('token', result.data.token);
-        localStorage.setItem('isLogin', true);        
+        localStorage.setItem('isLogin', true);
+        localStorage.setItem('username', result.data.username);        
         setIsLogin(true)
         handleClose()
     })
