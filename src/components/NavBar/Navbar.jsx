@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SignUpToModal from "./SignUp/SignUptoModal";
 import styles from "./Navbar.module.css";
 import LogoMilan from "../LogoMilan/LogoMilan";
+import LogOut from './LogOut'
 
 const Navbar = () => {
-  const [ state, setState]=(useState({
-    // isLogin: {localStorage.storage.getItem('isLogin')}  ,
-    isLogin:false,
-    token: localStorage.getItem('token')
-  }))
+  const [isLogin, setIsLogin] = useState(false)
+  const [token, setToken] = useState(localStorage.getItem('token'))
+
+  useEffect(() => {
+    console.log(localStorage.getItem('token'))       
+    if(localStorage.getItem('token')){
+      setIsLogin(true)      
+    }else{
+      setIsLogin(false)
+    }
+  }, [])
+
+  const handleLogOut = () => {
+    localStorage.removeItem('token')
+    setIsLogin(false)
+  }
 
   return (
     <React.Fragment>
@@ -20,7 +32,7 @@ const Navbar = () => {
           placeholder="Search movies"
         ></input>
         {/* <SignUp />             */}
-        {state.isLogin==false ? <SignUpToModal /> : <div>log out</div>}
+        {isLogin==false ? <SignUpToModal setIsLogin={setIsLogin}/> : <LogOut handleLogOut={handleLogOut}/>}
       </div>
     </React.Fragment>
   );

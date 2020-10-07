@@ -49,15 +49,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalSignUp = ({ setIsSignup }) => {
+const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => {
   const classes = useStyles();
   
   const [ state, setState] = useState({
     email:"",
     password:"",
     username:"", 
-    fullname:"", 
-    bio:""
+    fullname:"andri3", 
+    bio:"bio3"
   });
 
   const handleChange = (e) => {
@@ -79,7 +79,9 @@ const ModalSignUp = ({ setIsSignup }) => {
     .then(result => {
         console.log('Success:', result);
         localStorage.setItem('token', result.data.token);
-        localStorage.setItem('isLogin', true);
+        localStorage.setItem('isLogin', true);        
+        setIsLogin(true)
+        handleClose()
     })
   }
   return (
@@ -157,7 +159,7 @@ const ModalSignUp = ({ setIsSignup }) => {
                 <span
                   href="#"
                   variant="body2"
-                  onClick={() => setIsSignup(false)}
+                  onClick={() => setIsSignup(true)}
                 >
                   Sign in
                 </span>

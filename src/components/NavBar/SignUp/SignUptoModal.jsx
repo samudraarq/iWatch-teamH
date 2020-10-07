@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUpToModal = () => {
+const SignUpToModal = ({setIsLogin}) => {
   const [isSignup, setIsSignup] = useState(true);
   const classes = useStyles();
 
@@ -46,9 +46,15 @@ const SignUpToModal = () => {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       {isSignup ? (
-        <ModalSignUp setIsSignup={setIsSignup} />
+        <ModalSignIn 
+          setIsSignup={setIsSignup} 
+          setIsLogin={setIsLogin} 
+          handleClose={handleClose}/>
       ) : (
-        <ModalSignIn setIsSignup={setIsSignup} />
+        <ModalSignUp 
+          setIsSignup={setIsSignup} 
+          setIsLogin={setIsLogin} 
+          handleClose={handleClose}/>
       )}
 
       <button className="btn btn-warning" onClick={handleClose}>
