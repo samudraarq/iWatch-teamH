@@ -60,7 +60,7 @@ const ModalSignIn = ({ setIsSignup }) => {
   const handleChange = (e) => {
     console.log(e.target.value);
     console.log(e.target.name)
-    setState({[e.target.name]:e.target.value});
+    setState({...state, [e.target.name]:e.target.value})
   };
 
   const handleSubmit = (e) => {

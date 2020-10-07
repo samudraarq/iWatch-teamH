@@ -63,7 +63,7 @@ const ModalSignUp = ({ setIsSignup }) => {
   const handleChange = (e) => {
     console.log(e.target.value);
     console.log(e.target.name)
-    setState({[e.target.name]:e.target.value});
+    setState({...state, [e.target.name]:e.target.value})
   };
 
   const handleSubmit = (e) => {
@@ -98,7 +98,7 @@ const ModalSignUp = ({ setIsSignup }) => {
                 required
                 fullWidth
                 id="userName"
-                name="userName"
+                name="username"
                 autoComplete="usrname"
                 onChange={handleChange}                
               />
