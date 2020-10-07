@@ -97,9 +97,9 @@ const ModalSignUp = ({ setIsSignup }) => {
                 variant="outlined"
                 required
                 fullWidth
-                id="userName"
+                id="username"
                 name="username"
-                autoComplete="usrname"
+                autoComplete="username"
                 onChange={handleChange}                
               />
             </Grid>
