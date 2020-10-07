@@ -4,6 +4,8 @@ import { StylesProvider } from "@material-ui/core/styles";
 import "./App.css";
 import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
+import SearchPages from "./pages/SearchPages";
+
 
 function App() {
   return (
@@ -13,10 +15,13 @@ function App() {
           <Route path="/movie/details/:id">
             <MovieDetails />
           </Route>
+          <Route path="/search/:inputSearch">
+            <SearchPages />
+          </Route>
           <Route path="/">
             <Redirect to="/all" />
             <Home />
-          </Route>
+          </Route>          
         </Switch>
       </BrowserRouter>
     </StylesProvider>
