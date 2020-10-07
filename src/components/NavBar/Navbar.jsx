@@ -3,6 +3,8 @@ import SignUpToModal from "./SignUp/SignUptoModal";
 import styles from "./Navbar.module.css";
 import LogoMilan from "../LogoMilan/LogoMilan";
 import LogOut from './LogOut'
+import FotoProfil from './FotoProfil'
+import DropDownMenu from './DropDownMenu'
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState(false)
@@ -32,7 +34,7 @@ const Navbar = () => {
           placeholder="Search movies"
         ></input>
         {/* <SignUp />             */}
-        {isLogin==false ? <SignUpToModal setIsLogin={setIsLogin}/> : <LogOut handleLogOut={handleLogOut}/>}
+        {isLogin==false ? <SignUpToModal setIsLogin={setIsLogin}/> : <DropDownMenu />}
       </div>
     </React.Fragment>
   );
