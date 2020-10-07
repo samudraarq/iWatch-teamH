@@ -57,6 +57,9 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
     password:""
   });
 
+  const [isErrorEmail, setIsErrorEmail] = useState(false)
+  const [isErrorPassword, setIsErrorPassword] = useState(false)
+
   const handleChange = (e) => {
     console.log(e.target.value);
     console.log(e.target.name)
@@ -65,6 +68,14 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(state.email=="" && state.password==""){
+      setIsErrorEmail(true)
+      setIsErrorPassword(true)
+    }else if(state.email==""){
+      setIsErrorEmail(true)
+    }else if(state.password==""){
+      setIsErrorPassword(true)
+    }else{
     fetch('http://appdoto.herokuapp.com/api/users/login', {
         method: 'POST',
         headers: {
@@ -78,9 +89,11 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
         localStorage.setItem('token', result.data.token);
         localStorage.setItem('username',result.data.username)
         localStorage.setItem('isLogin', true);
+        setIsErrorEmail(false)
+        setIsErrorPassword(false)
         setIsLogin(true)    
         handleClose()        
-    })
+    }).catch((err)=>(console.log("error")))}
   }
 
   return (
@@ -105,6 +118,7 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
                 id="email"
                 name="email"
                 autoComplete="email"
+                error={isErrorEmail}                
                 onChange={handleChange}                
               />
             </Grid>
@@ -124,6 +138,7 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                error={isErrorPassword}   
                 onChange={handleChange}    
               />
             </Grid>
