@@ -4,6 +4,12 @@ import styles from "./Navbar.module.css";
 import LogoMilan from "../LogoMilan/LogoMilan";
 
 const Navbar = () => {
+  const [ state, setState]=(useState({
+    // isLogin: {localStorage.storage.getItem('isLogin')}  ,
+    isLogin:false,
+    token: localStorage.getItem('token')
+  }))
+
   return (
     <React.Fragment>
       <div className={styles.container}>
@@ -14,7 +20,7 @@ const Navbar = () => {
           placeholder="Search movies"
         ></input>
         {/* <SignUp />             */}
-        <SignUpToModal />
+        {state.isLogin==false ? <SignUpToModal /> : <div>log out</div>}
       </div>
     </React.Fragment>
   );
