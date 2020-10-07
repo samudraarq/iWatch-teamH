@@ -146,8 +146,7 @@ const ModalSignUp = ({ setIsSignup }) => {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
-            onSubmit={handleSubmit}
+            className={classes.submit}            
           >
             Sign Up
           </Button>
