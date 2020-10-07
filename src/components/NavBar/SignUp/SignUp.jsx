@@ -3,7 +3,7 @@ import React from 'react';
 const SignOut = () =>{
     return(
         <React.Fragment>
-            <button>Sign Out</button>
+            <div>Sign Up</div>
         </React.Fragment>
     )
 }

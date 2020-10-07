@@ -49,23 +49,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Modal2 = ({ setIsSignup }) => {
+const ModalSignIn = ({ setIsSignup }) => {
   const classes = useStyles();
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleUserName = (e) => {
+  const [ state, setState] = useState({
+    email:"",
+    password:""
+  });
+
+  const handleChange = (e) => {
     console.log(e.target.value);
-    setUserName(e.target.value);
+    console.log(e.target.name)
+    setState({[e.target.name]:e.target.value});
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://appdoto.herokuapp.com/api/users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(state)
+    })
+    .then(res => res.json())
+    .then(result => {
+        console.log('Success:', result);
+        localStorage.setItem('token', result.data.token);
+        localStorage.setItem('isLogin', true);
+    })
+  }
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <LogoMilan />
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Typography
               component="div"
@@ -82,6 +102,7 @@ const Modal2 = ({ setIsSignup }) => {
                 id="email"
                 name="email"
                 autoComplete="email"
+                onChange={handleChange}                
               />
             </Grid>
             <Typography
@@ -100,6 +121,7 @@ const Modal2 = ({ setIsSignup }) => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange}    
               />
             </Grid>
           </Grid>
@@ -109,6 +131,7 @@ const Modal2 = ({ setIsSignup }) => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onSubmit={handleSubmit}
           >
             Sign In
           </Button>
@@ -135,4 +158,4 @@ const Modal2 = ({ setIsSignup }) => {
   );
 };
 
-export default Modal2;
+export default ModalSignIn;
