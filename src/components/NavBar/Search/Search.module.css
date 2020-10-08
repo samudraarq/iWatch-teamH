@@ -1,6 +1,7 @@
 .searchBox {
   position: relative;
   height: 4rem;
+  margin-right: 2rem;
 }
 
 .searchIcon {

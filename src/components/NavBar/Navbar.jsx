@@ -60,16 +60,18 @@ const Navbar = () => {
     >
       <div className={styles.container}>
         <LogoMilan scrollState={scrollState} />
-        <Search />
-        {isLogin == false ? (
-          <SignUpToModal setIsLogin={setIsLogin} scrollState={scrollState} />
-        ) : (
-          <DropDownMenu
-            handleLogOut={handleLogOut}
-            image={image}
-            scrollState={scrollState}
-          />
-        )}
+        <div className={styles.searchLogin}>
+          <Search />
+          {isLogin == false ? (
+            <SignUpToModal setIsLogin={setIsLogin} scrollState={scrollState} />
+          ) : (
+            <DropDownMenu
+              handleLogOut={handleLogOut}
+              image={image}
+              scrollState={scrollState}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

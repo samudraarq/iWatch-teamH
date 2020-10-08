@@ -19,3 +19,8 @@
 .changeBg {
   background-color: #f6f5f5;
 }
+
+.searchLogin {
+  display: flex;
+  align-items: center;
+}
