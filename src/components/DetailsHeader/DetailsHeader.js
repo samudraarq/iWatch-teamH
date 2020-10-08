@@ -3,6 +3,8 @@ import styles from "./DetailsHeader.module.css";
 import Rating from "@material-ui/lab/Rating";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import AddIcon from "@material-ui/icons/Add";
 
 const DetailsHeader = ({ movie }) => {
   const [trailer, setTrailer] = useState([]);
@@ -59,10 +61,18 @@ const DetailsHeader = ({ movie }) => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              Watch Trailer
+              <div className={styles.btnContainer}>
+                <YouTubeIcon className={styles.icon} />
+                <span>Watch Trailer</span>
+              </div>
             </a>
           )}
-          <button className={styles.watchList}>Add to Watchlist</button>
+          <button className={styles.watchList}>
+            <div className={styles.btnContainer}>
+              <AddIcon className={styles.icon} />
+              <span>Add to Watchlist</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>
