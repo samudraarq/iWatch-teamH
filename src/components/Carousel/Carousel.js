@@ -23,11 +23,13 @@ const Carousel = () => {
 
   const slides = movies.map((movie, idx) => (
     <SwiperSlide key={idx}>
-      <img
-        className={styles.image}
-        src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
-        alt={"movie poster"}
-      />
+      <div className={styles.imgContainer}>
+        <img
+          className={styles.image}
+          src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
+          alt={"movie poster"}
+        />
+      </div>
     </SwiperSlide>
   ));
 
