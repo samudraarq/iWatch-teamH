@@ -22,6 +22,13 @@
   margin: auto;
 }
 
+.imageContainer {
+  height: 22.5rem;
+  width: 15rem;
+  margin: auto;
+  position: relative;
+}
+
 .title {
   font-weight: bold;
   font-size: 1.6rem;
@@ -42,16 +49,6 @@
   padding: 0.1rem 0.5rem;
   border: 1px solid #e2e1e1;
   border-radius: 1rem;
-}
-
-.imageContainer {
-  height: 22.5rem;
-  width: 15rem;
-  object-fit: cover;
-  border-radius: 5px;
-  background-color: #e2e1e1;
-  margin: auto;
-  position: relative;
 }
 
 .hoverEffect figcaption::before {

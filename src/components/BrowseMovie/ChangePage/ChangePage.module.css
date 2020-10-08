@@ -9,12 +9,19 @@
   align-items: center;
   font-size: 1.6rem;
   margin-bottom: 4rem;
+  color: #f6f5f5;
 }
 
 .pagination > li {
   padding: 1rem;
   list-style: none;
   border-radius: 0.5rem;
+  transition: all 0.2s ease-in;
+}
+
+.pagination > li:hover {
+  background-color: #f6f5f5;
+  color: #3e3639;
 }
 
 .pagination > li > a {
@@ -24,6 +31,6 @@
 }
 
 .active {
-  background-color: salmon;
-  color: white;
+  background-color: #f6f5f5;
+  color: #3e3639;
 }
