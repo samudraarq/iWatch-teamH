@@ -21,16 +21,20 @@ const BrowseMovie = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Browse by category</h2>
-      <CategorySelect categories={categories} />
-      <Switch>
-        <Route path="/movies/browse/:category">
-          <MovieList categories={categories} />
-        </Route>
-        <Route path="/all">
-          <MovieList categories={categories} allMovies />
-        </Route>
-      </Switch>
+      <div className={styles.categorySelect}>
+        <h2 className={styles.title}>Browse by category</h2>
+        <CategorySelect categories={categories} />
+      </div>
+      <div className={styles.movies}>
+        <Switch>
+          <Route path="/movies/browse/:category">
+            <MovieList categories={categories} />
+          </Route>
+          <Route path="/all">
+            <MovieList categories={categories} allMovies />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 };

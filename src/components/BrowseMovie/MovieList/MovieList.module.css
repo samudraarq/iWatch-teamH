@@ -10,7 +10,7 @@
 .movie {
   text-decoration: none;
   margin-bottom: 2rem;
-  color: #121212;
+  color: #f6f5f5;
 }
 
 .image {
@@ -18,7 +18,7 @@
   width: 15rem;
   object-fit: cover;
   border-radius: 5px;
-  background-color: #f0f0f0;
+  background-color: #e2e1e1;
   margin: auto;
 }
 
@@ -40,6 +40,6 @@
 .genre span {
   margin: 0.3rem;
   padding: 0.1rem 0.5rem;
-  border: 1px solid #121212;
+  border: 1px solid #e2e1e1;
   border-radius: 1rem;
 }
