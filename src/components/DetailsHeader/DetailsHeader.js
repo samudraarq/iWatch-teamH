@@ -67,7 +67,10 @@ const DetailsHeader = ({ movie }) => {
               </div>
             </a>
           )}
-          <button className={styles.watchList}>
+          <button
+            className={styles.watchList}
+            onClick={() => console.log("clicked")}
+          >
             <div className={styles.btnContainer}>
               <AddIcon className={styles.icon} />
               <span>Add to Watchlist</span>

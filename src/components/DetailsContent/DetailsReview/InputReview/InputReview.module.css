@@ -8,7 +8,7 @@
   width: 10rem;
   height: 10rem;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 50%;
   margin-top: 1rem;
 }
 
@@ -21,6 +21,7 @@
   font-size: 2.4rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  color: #f6f5f5;
 }
 
 .form {
@@ -29,22 +30,43 @@
 
 .textarea {
   width: 100%;
-  border: 1px solid #c4c4c4;
+  border: 1px solid #3e3639;
   border-radius: 5px;
   font-family: inherit;
   padding: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  outline: none;
 }
 
 .btn {
   font-family: inherit;
   font-weight: bold;
-  height: 3rem;
-  width: 20rem;
+  padding: 1rem 4rem;
   border: none;
   border-radius: 5px;
-  background-color: salmon;
-  color: white;
+  background-color: #f6f5f5;
+  color: #3e3639;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 2.4rem;
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover .icon {
+  visibility: visible;
+  opacity: 1;
+  width: 3rem;
 }

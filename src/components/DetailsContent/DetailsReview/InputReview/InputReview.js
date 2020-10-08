@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Rating } from "@material-ui/lab";
 import styles from "./InputReview.module.css";
+import CheckIcon from "@material-ui/icons/Check";
 
 const InputReview = () => {
   const [text, setText] = useState("");
@@ -11,7 +12,7 @@ const InputReview = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // console.log(text);
+    console.log(text);
   };
 
   return (
@@ -39,7 +40,10 @@ const InputReview = () => {
             placeholder="Input a review"
           />
           <button onClick={handleClick} className={styles.btn}>
-            Add a review
+            <div className={styles.textContainer}>
+              <CheckIcon className={styles.icon} />
+              <span>Add Review</span>
+            </div>
           </button>
         </form>
       </div>
