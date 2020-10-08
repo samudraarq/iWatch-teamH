@@ -44,7 +44,7 @@ const MovieReview = () => {
 
   const movieReviewList = reviews.map((review) => (
     <div className={styles.reviewContainer} key={Math.random()}>
-      <img src={review.img} alt={review.name} />
+      <img src={review.img} alt={review.name} className={styles.img} />
       <div className={styles.review}>
         <p className={styles.name}>{review.name}</p>
         <span className={styles.rating}>
