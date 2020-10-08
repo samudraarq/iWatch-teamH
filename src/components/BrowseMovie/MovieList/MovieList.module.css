@@ -19,7 +19,13 @@
   object-fit: cover;
   border-radius: 5px;
   background-color: #e2e1e1;
+  color: #4a4145;
   margin: auto;
+}
+
+.image span {
+  padding-top: 10rem;
+  display: block;
 }
 
 .imageContainer {

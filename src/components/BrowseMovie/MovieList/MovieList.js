@@ -46,7 +46,9 @@ const MovieList = ({ categories, allMovies }) => {
         className={styles.movie}
       >
         {movie.poster_path === null ? (
-          <p className={styles.image}>No poster</p>
+          <p className={styles.image}>
+            <span>No poster</span>
+          </p>
         ) : (
           <div className={styles.imageContainer}>
             <figure className={styles.hoverEffect}>
