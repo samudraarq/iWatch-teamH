@@ -1,0 +1,51 @@
+.listContainer {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    justify-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .movie {
+    text-decoration: none;
+    margin-bottom: 2rem;
+    color: #121212;
+  }
+  
+  .image {
+    height: 22.5rem;
+    width: 15rem;
+    object-fit: cover;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    margin: auto;
+  }
+  
+  .title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    width: 17rem;
+    margin: 0.5rem auto;
+  }
+  
+  .genre {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+    font-size: 0.7rem;
+    justify-content: center;
+  }
+  
+  .genre span {
+    margin: 0.3rem;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid #121212;
+    border-radius: 1rem;
+  }
+
+  .container{
+      max-width: 124rem;
+      margin:auto;
+  }
+  
