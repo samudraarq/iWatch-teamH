@@ -12,20 +12,19 @@ const SearchResult = () => {
   const { inputSearch } = useParams();
 
   useEffect(() => {
-    const getMovies = async () => {    
-        const res = await axios.get(
+    const getMovies = async () => {
+      const res = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${inputSearch}&page=${currentPage}`
-        );
-        const result = await res.data;
-        // console.log(result.results);
-        setMaxPage(result.total_pages);
-        setMovies(result.results);    
-    }
+      );
+      const result = await res.data;
+      // console.log(result.results);
+      setMaxPage(result.total_pages);
+      setMovies(result.results);
+    };
     getMovies();
   }, [currentPage]);
 
   const movRender = movies.map((movie) => {
-   
     return (
       <Link
         to={`/movie/details/${movie.id}/overview`}
@@ -33,20 +32,25 @@ const SearchResult = () => {
         className={styles.movie}
       >
         {movie.poster_path === null ? (
-          <p className={styles.image}>No poster</p>
+          <p className={styles.image}>
+            <span>No poster</span>
+          </p>
         ) : (
-          <img
-            src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
-            alt="movie poster"
-            className={styles.image}
-          />
+          <div className={styles.imageContainer}>
+            <figure className={styles.hoverEffect}>
+              <img
+                src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                alt="movie poster"
+                className={styles.image}
+              />
+              <figcaption>
+                <h2>{movie.title}</h2>
+                <p>{movie.overview.slice(0, 100)}...</p>
+              </figcaption>
+            </figure>
+          </div>
         )}
         <p className={styles.title}>{movie.title}</p>
-        {/* <div className={styles.genre}>
-          {genres?.map((genre, idx) => (
-            <span key={idx}>{genre?.name}</span>
-          ))}
-        </div> */}
       </Link>
     );
   });
@@ -58,6 +62,7 @@ const SearchResult = () => {
 
   return (
     <div className={styles.container}>
+      <h2 className={styles.searchMovies}>Search Movies : {inputSearch}</h2>
       <div className={styles.listContainer}>{movRender}</div>
       <ChangePage pageChange={handlePageChange} maxPage={maxPage} />
     </div>
