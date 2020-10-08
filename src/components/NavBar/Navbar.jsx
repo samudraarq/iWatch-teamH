@@ -28,15 +28,47 @@ const Navbar = () => {
     setIsLogin(false);
   };
 
+  // Change navbar when scrolling
+  let listener = null;
+  const [scrollState, setScrollState] = useState("top");
+
+  useEffect(() => {
+    listener = document.addEventListener("scroll", (e) => {
+      var scrolled = document.scrollingElement.scrollTop;
+      // console.log(scrolled);
+      if (scrolled >= 500) {
+        if (scrollState !== "nottop") {
+          setScrollState("nottop");
+        }
+      } else {
+        if (scrollState !== "top") {
+          setScrollState("top");
+        }
+      }
+    });
+    // console.log(scrollState);
+    return () => {
+      document.removeEventListener("scroll", listener);
+    };
+  }, [scrollState]);
+
   return (
-    <div className={styles.navbar}>
+    <div
+      className={`${styles.navbar} ${
+        scrollState === "nottop" && styles.changeBg
+      }`}
+    >
       <div className={styles.container}>
-        <LogoMilan color="#F6F5F5" />
+        <LogoMilan scrollState={scrollState} />
         <Search />
         {isLogin == false ? (
-          <SignUpToModal setIsLogin={setIsLogin} />
+          <SignUpToModal setIsLogin={setIsLogin} scrollState={scrollState} />
         ) : (
-          <DropDownMenu handleLogOut={handleLogOut} image={image} />
+          <DropDownMenu
+            handleLogOut={handleLogOut}
+            image={image}
+            scrollState={scrollState}
+          />
         )}
       </div>
     </div>

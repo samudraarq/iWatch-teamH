@@ -15,3 +15,13 @@
   background: #f6f5f5;
   color: #3e3639;
 }
+
+.changeColor {
+  border: 1px solid #3e3639;
+  color: #3e3639;
+}
+
+.changeColor:hover {
+  background: #3e3639;
+  color: #f6f5f5;
+}

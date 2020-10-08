@@ -11,11 +11,15 @@
   align-items: center;
 }
 
-.logoContainer h3 {
+.brand {
   font-size: 2.4rem;
-  color: #121212;
+  color: #f6f5f5;
 }
 
 .link {
   text-decoration: none;
+}
+
+.changeColor {
+  color: #3e3639;
 }

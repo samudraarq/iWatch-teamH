@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUpToModal = ({setIsLogin}) => {
+const SignUpToModal = ({ setIsLogin, scrollState }) => {
   const [isSignup, setIsSignup] = useState(true);
   const classes = useStyles();
 
@@ -46,15 +46,17 @@ const SignUpToModal = ({setIsLogin}) => {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       {isSignup ? (
-        <ModalSignIn 
-          setIsSignup={setIsSignup} 
-          setIsLogin={setIsLogin} 
-          handleClose={handleClose}/>
+        <ModalSignIn
+          setIsSignup={setIsSignup}
+          setIsLogin={setIsLogin}
+          handleClose={handleClose}
+        />
       ) : (
-        <ModalSignUp 
-          setIsSignup={setIsSignup} 
-          setIsLogin={setIsLogin} 
-          handleClose={handleClose}/>
+        <ModalSignUp
+          setIsSignup={setIsSignup}
+          setIsLogin={setIsLogin}
+          handleClose={handleClose}
+        />
       )}
 
       <button className="btn btn-warning" onClick={handleClose}>
@@ -65,7 +67,13 @@ const SignUpToModal = ({setIsLogin}) => {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen} className={styles.button}>
+      <button
+        type="button"
+        onClick={handleOpen}
+        className={`${styles.button} ${
+          scrollState === "nottop" && styles.changeColor
+        }`}
+      >
         <SignUp />
       </button>
       <Modal
