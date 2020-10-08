@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
+import SwiperCore, { Autoplay, EffectFade } from "swiper";
 import axios from "axios";
 import "swiper/swiper-bundle.min.css";
 import styles from "./Carousel.module.css";
 
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+SwiperCore.use([Autoplay, EffectFade]);
 
 const Carousel = () => {
   const [movies, setMovies] = useState([{}, {}, {}, {}, {}]);
@@ -38,9 +38,8 @@ const Carousel = () => {
         tag="section"
         spaceBetween={0}
         slidesPerView={1}
-        navigation
-        pagination
-        autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 3000 }}
+        effect="fade"
       >
         {slides}
       </Swiper>
