@@ -6,15 +6,6 @@
   align-items: center;
 }
 
-.input {
-  width: 40rem;
-  height: 4rem;
-  border: 2px solid #c4c4c4;
-  border-radius: 5px;
-  padding-left: 1rem;
-  outline: none;
-}
-
 .navbar {
   position: fixed;
   top: 0;

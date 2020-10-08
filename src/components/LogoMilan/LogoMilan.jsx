@@ -4,7 +4,6 @@ import styles from "./LogoMilan.module.css";
 import icon from "./iWatch_logo.png";
 
 const LogoMilan = ({ scrollState }) => {
-  console.log(scrollState);
   return (
     <Link to="/all" className={styles.link}>
       <div className={styles.logoContainer}>
