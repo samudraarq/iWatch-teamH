@@ -1,44 +1,49 @@
-import React from 'react'
-import LogoMilan from '../LogoMilan/LogoMilan';
-import styles from './Footer.module.css'
-import img from './fbIcon.png'
-
+import React from "react";
+import LogoMilan from "../LogoMilan/LogoMilan";
+import styles from "./Footer.module.css";
+import img from "./fbIcon.png";
+import playStoreLogo from "./google-play-badge.png";
+import AppStoreLogo from "./Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg";
 
 const Footer = () => {
-    return (
-        <div className={styles.footer}>
-            <div className={styles.container}>            
-                <div className={styles.logoAndDesc}>
-                    <LogoMilan/>            
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>                
-                </div>
-                <div className={styles.navFooter}>
-                    <ul>
-                        <li>Tentang Kami</li>
-                        <li>Blog</li>
-                        <li>Layanan</li>
-                        <li>Karir</li>
-                        <li>Pusat Media</li>
-                    </ul>
-                </div>
-                <div className={styles.socialMedia}>
-                    <h3>Download</h3>
-                    <div className={styles.downloadOption}>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJazvEi9Qg9_JvD95YCmkyHz2DvBuArRFFgA&usqp=CAU" alt=""></img>  
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJazvEi9Qg9_JvD95YCmkyHz2DvBuArRFFgA&usqp=CAU" alt=""></img>  
-                    </div>
-                    <h3>Social Media</h3>
-                    <div className={styles.downloadSocmed}>
-                        <img src={img}></img>
-                        <img src={img}></img>
-                        <img src={img}></img>                        
-                    </div>
-                </div>
-            </div>
-            <div className={styles.copyright}>
-                Copyright © 2000-202 MilanTV.  All Rights Reserved
-            </div>            
+  return (
+    <div className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.logoAndDesc}>
+          <LogoMilan />
+          <p>
+            Google Play and the Google Play logo are trademarks of Google LLC.
+            App Store® and App Store® logo are trademarks of Apple Inc.,
+            registered in the U.S. and other countries.
+          </p>
         </div>
-    )
-}
+        <div className={styles.navFooter}>
+          <ul>
+            <li>Tentang Kami</li>
+            <li>Blog</li>
+            <li>Layanan</li>
+            <li>Karir</li>
+            <li>Pusat Media</li>
+          </ul>
+        </div>
+        <div className={styles.socialMedia}>
+          <h3>Download</h3>
+          <div className={styles.downloadOption}>
+            <img src={playStoreLogo} alt="Play Store Logo"></img>
+            <img src={AppStoreLogo} alt="App Store Logo"></img>
+          </div>
+          <h3>Social Media</h3>
+          <div className={styles.downloadSocmed}>
+            <img src={img}></img>
+            <img src={img}></img>
+            <img src={img}></img>
+          </div>
+        </div>
+      </div>
+      <span className={styles.copyright}>
+        Copyright © 2020 iWatch. All Rights Reserved.
+      </span>
+    </div>
+  );
+};
 export default Footer;

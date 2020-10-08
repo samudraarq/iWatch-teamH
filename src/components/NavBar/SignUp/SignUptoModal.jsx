@@ -1,13 +1,13 @@
-import React, { useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import ModalMilan from '../../Modal/Modal2'
-import SignIn from '../SignIn/SignIn'
-
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import ModalMilan from "../../Modal/Modal2";
+import SignIn from "../SignIn/SignIn";
+import styles from "./SignUp.module.css";
 
 function getModalStyle() {
-  const top = 50 ;
-  const left = 50 ;
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -18,18 +18,18 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
+    position: "absolute",
     // width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     // boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
 }));
 
-const SignUpToModal = () =>{
+const SignUpToModal = () => {
   const classes = useStyles();
-  
+
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
 
@@ -42,19 +42,18 @@ const SignUpToModal = () =>{
   };
 
   const body = (
-    <div 
-        style={modalStyle} 
-        className={classes.paper}
-    >
-        <ModalMilan />     
-        <button className="btn btn-warning" onClick={handleClose}>Close</button>
+    <div style={modalStyle} className={classes.paper}>
+      <ModalMilan />
+      <button className="btn btn-warning" onClick={handleClose}>
+        Close
+      </button>
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen} className="btn btn-danger">
-        <SignIn/>
+      <button type="button" onClick={handleOpen} className={styles.button}>
+        <SignIn />
       </button>
       <Modal
         open={open}
@@ -66,5 +65,5 @@ const SignUpToModal = () =>{
       </Modal>
     </div>
   );
-}
-export default SignUpToModal
+};
+export default SignUpToModal;

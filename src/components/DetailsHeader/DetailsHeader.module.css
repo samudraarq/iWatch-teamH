@@ -48,6 +48,8 @@
 .trailerLink {
   margin-right: 2rem;
   font-size: 1.6rem;
+  color: #fff;
+  text-decoration: none;
   outline: none;
   padding: 1.5rem 4rem;
   background-color: salmon;
