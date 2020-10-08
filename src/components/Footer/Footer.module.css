@@ -1,6 +1,6 @@
 .footer {
-  background-color: #eb507f;
-  color: #fff;
+  background-color: #f6f5f5;
+  color: #3e3639;
 }
 
 .container {
@@ -26,12 +26,15 @@
   padding: 0.3rem 1rem;
   margin: 0.1rem;
   border-radius: 3px;
-  background-color: #eb507f;
+  color: #3e3639;
   cursor: pointer;
+  transition: all 0.2s ease-in;
 }
 
 .navFooter li:hover {
-  background-color: #b9335c;
+  background-color: #3e3639;
+  color: #f6f5f5;
+  transform: rotateZ(-5deg) scale(1.1);
 }
 
 .socialMedia h3 {
