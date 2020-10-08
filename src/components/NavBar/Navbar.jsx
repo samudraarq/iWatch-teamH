@@ -5,7 +5,7 @@ import LogoMilan from "../LogoMilan/LogoMilan";
 import DropDownMenu from "./DropDownMenu";
 import Search from "./Search/Search";
 
-const Navbar = () => {
+const Navbar = ({ scrollChange }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [image, setImage] = useState("");
@@ -36,7 +36,8 @@ const Navbar = () => {
     listener = document.addEventListener("scroll", (e) => {
       var scrolled = document.scrollingElement.scrollTop;
       // console.log(scrolled);
-      if (scrolled >= 500) {
+      let scrollTop = scrollChange ? scrollChange : 500;
+      if (scrolled >= scrollTop) {
         if (scrollState !== "nottop") {
           setScrollState("nottop");
         }
