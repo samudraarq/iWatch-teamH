@@ -48,11 +48,19 @@ const MovieList = ({ categories, allMovies }) => {
         {movie.poster_path === null ? (
           <p className={styles.image}>No poster</p>
         ) : (
-          <img
-            src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
-            alt="movie poster"
-            className={styles.image}
-          />
+          <div className={styles.imageContainer}>
+            <figure className={styles.hoverEffect}>
+              <img
+                src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                alt="movie poster"
+                className={styles.image}
+              />
+              <figcaption>
+                <h2>{movie.title}</h2>
+                <p>{movie.overview.slice(0, 100)}...</p>
+              </figcaption>
+            </figure>
+          </div>
         )}
         <p className={styles.title}>{movie.title}</p>
         <div className={styles.genre}>
