@@ -1,10 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const SignOut = () =>{
-    return(
-        <React.Fragment>
-            <div>Sign Up</div>
-        </React.Fragment>
-    )
-}
-export default SignOut
+const SignOut = () => {
+  return <div>Sign In</div>;
+};
+export default SignOut;

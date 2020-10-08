@@ -1,16 +1,17 @@
 .button {
   height: 4rem;
   width: 10rem;
-  border: none;
+  border: 1px solid #f6f5f5;
   border-radius: 5px;
-  background: #eb507f;
-  color: #fff;
+  background: transparent;
+  color: #f6f5f5;
   font-size: 1.6rem;
   cursor: pointer;
-  transition: all 0.3s ease-in;
+  transition: all 0.1s ease-in;
   outline: none;
 }
 
 .button:hover {
-  background: #cf406b;
+  background: #f6f5f5;
+  color: #3e3639;
 }
