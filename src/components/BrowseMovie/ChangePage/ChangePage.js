@@ -5,6 +5,7 @@ import useWindowSize from "../../Hooks/useWindowResize"
 
 const ChangePage = ({ pageChange, maxPage }) => {
   const [smallDevice, setSmallDevice] = useState(false)
+  const [extSmallDevice, setExtSmallDevice] = useState(false)
 
   const [width, height] = useWindowSize();
 
@@ -13,6 +14,12 @@ const ChangePage = ({ pageChange, maxPage }) => {
       setSmallDevice(true);
     } else {
       setSmallDevice(false);
+    }
+
+    if (width < 350) {
+      setExtSmallDevice(true)
+    } else {
+      setExtSmallDevice(false)
     }
   }, [width]);
 
@@ -23,7 +30,7 @@ const ChangePage = ({ pageChange, maxPage }) => {
         nextLabel={"next"}
         pageCount={maxPage}
         marginPagesDisplayed={1}
-        pageRangeDisplayed={smallDevice ? 2 : 5 }
+        pageRangeDisplayed={extSmallDevice ? 0 : smallDevice ? 2 : 5 }
         onPageChange={pageChange}
         containerClassName={styles.pagination}
         activeClassName={styles.active}
