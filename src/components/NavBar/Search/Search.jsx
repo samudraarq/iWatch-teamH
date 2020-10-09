@@ -31,8 +31,9 @@ const Search = () => {
         placeholder="Search movies"
         onChange={handleChange}
         onKeyUp={handleSubmit}
+        onBlur={() => setOpenSearch(false)}
       ></input>
-      <SearchIcon className={styles.searchIcon} />
+      <SearchIcon className={styles.searchIcon} onClick={() => setOpenSearch(true)} />
     </div>
   );
 };

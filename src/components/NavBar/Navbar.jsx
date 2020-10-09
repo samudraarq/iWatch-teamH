@@ -4,11 +4,23 @@ import styles from "./Navbar.module.css";
 import LogoMilan from "../LogoMilan/LogoMilan";
 import DropDownMenu from "./DropDownMenu";
 import Search from "./Search/Search";
+import useWindowSize from "../Hooks/useWindowResize";
 
 const Navbar = ({ scrollChange }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [image, setImage] = useState("");
+  const [smallDevice, setSmallDevice] = useState(false)
+
+  const [width, height] = useWindowSize();
+
+  useEffect(() => {
+    if (width < 600) {
+      setSmallDevice(true);
+    } else {
+      setSmallDevice(false);
+    }
+  }, [width]);
 
   useEffect(() => {
     console.log(localStorage.getItem("token"));
@@ -36,7 +48,7 @@ const Navbar = ({ scrollChange }) => {
     listener = document.addEventListener("scroll", (e) => {
       var scrolled = document.scrollingElement.scrollTop;
       // console.log(scrolled);
-      let scrollTop = scrollChange ? scrollChange : 500;
+      let scrollTop = scrollChange ? scrollChange : smallDevice ? 20 : 400;
       if (scrolled >= scrollTop) {
         if (scrollState !== "nottop") {
           setScrollState("nottop");
