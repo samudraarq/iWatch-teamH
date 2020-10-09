@@ -5,7 +5,7 @@
 
 .imgContainer {
   width: 100%;
-  height: 50rem;
+  height: 40rem;
 }
 
 .image {
@@ -16,9 +16,16 @@
 
 @keyframes moveUp {
   from {
-    transform: translateY(0%);
+    transform: translateY(-10%);
   }
   to {
-    transform: translateY(-20%);
+    transform: translateY(-30%);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .imgContainer {
+    width: 100%;
+    height: 30rem;
   }
 }
