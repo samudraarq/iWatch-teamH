@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
 import SearchPages from "./pages/SearchPages";
 
-
 function App() {
   return (
     <StylesProvider injectFirst>
@@ -18,10 +17,13 @@ function App() {
           <Route path="/search/:inputSearch">
             <SearchPages />
           </Route>
+          <Route path="/all">
+            <Home />
+          </Route>
           <Route path="/">
             <Redirect to="/all" />
             <Home />
-          </Route>          
+          </Route>
         </Switch>
       </BrowserRouter>
     </StylesProvider>
