@@ -34,3 +34,9 @@
   background-color: #f6f5f5;
   color: #3e3639;
 }
+
+@media only screen and (max-width: 1260px) {
+  .paginationContainer {
+    max-width: 90%;
+  }
+}

@@ -114,3 +114,9 @@
   transform: translate3d(0, 0, 0);
   color: #fff;
 }
+
+@media only screen and (max-width: 1260px) {
+  .container {
+    max-width: 90%;
+  }
+}
