@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Avatar} from '@material-ui/core'
 
 const FotoProfil = ({image}) => {
-    const [username, setUsername] = useState(localStorage.getItem('username'))    
+    const [username] = useState(localStorage.getItem('username'))    
     // console.log(typeof username)
 
     return (                

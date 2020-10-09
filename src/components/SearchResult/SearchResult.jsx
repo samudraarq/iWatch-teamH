@@ -22,7 +22,7 @@ const SearchResult = () => {
       setMovies(result.results);
     };
     getMovies();
-  }, [currentPage]);
+  }, [currentPage, inputSearch]);
 
   const movRender = movies.map((movie) => {
     return (
