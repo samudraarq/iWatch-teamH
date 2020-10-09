@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
@@ -61,8 +60,8 @@ const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => {
   });
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.name)
+    // console.log(e.target.value);
+    // console.log(e.target.name)
     setState({...state, [e.target.name]:e.target.value})
   };
 
@@ -77,7 +76,7 @@ const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => {
     })
     .then(res => res.json())
     .then(result => {
-        console.log('Success:', result);
+        // console.log('Success:', result);
         localStorage.setItem('token', result.data.token);
         localStorage.setItem('isLogin', true);
         localStorage.setItem('username', result.data.username);        

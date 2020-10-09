@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
@@ -61,19 +60,19 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
   const [isErrorPassword, setIsErrorPassword] = useState(false)
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.name)
+    // console.log(e.target.value);
+    // console.log(e.target.name)
     setState({...state, [e.target.name]:e.target.value})
   };
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(state.email=="" && state.password==""){
+    if(state.email==="" && state.password===""){
       setIsErrorEmail(true)
       setIsErrorPassword(true)
-    }else if(state.email==""){
+    }else if(state.email===""){
       setIsErrorEmail(true)
-    }else if(state.password==""){
+    }else if(state.password===""){
       setIsErrorPassword(true)
     }else{
     fetch('http://appdoto.herokuapp.com/api/users/login', {
@@ -85,7 +84,7 @@ const ModalSignIn = ({ setIsSignup, setIsLogin, handleClose }) => {
     })
     .then(res => res.json())
     .then(result => {
-        console.log('Success:', result);
+        // console.log('Success:', result);
         localStorage.setItem('token', result.data.token);
         localStorage.setItem('username',result.data.username)
         localStorage.setItem('isLogin', true);

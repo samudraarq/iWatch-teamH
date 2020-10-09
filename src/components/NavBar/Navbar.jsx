@@ -8,11 +8,11 @@ import useWindowSize from "../Hooks/useWindowResize";
 
 const Navbar = ({ scrollChange }) => {
   const [isLogin, setIsLogin] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  // const [token, setToken] = useState(localStorage.getItem("token"));
   const [image, setImage] = useState("");
   const [smallDevice, setSmallDevice] = useState(false)
 
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
 
   useEffect(() => {
     if (width < 600) {
@@ -23,7 +23,7 @@ const Navbar = ({ scrollChange }) => {
   }, [width]);
 
   useEffect(() => {
-    console.log(localStorage.getItem("token"));
+    // console.log(localStorage.getItem("token"));
     if (localStorage.getItem("token")) {
       setIsLogin(true);
       setImage(
@@ -41,10 +41,10 @@ const Navbar = ({ scrollChange }) => {
   };
 
   // Change navbar when scrolling
-  let listener = null;
   const [scrollState, setScrollState] = useState("top");
 
   useEffect(() => {
+    let listener = null;
     listener = document.addEventListener("scroll", (e) => {
       var scrolled = document.scrollingElement.scrollTop;
       // console.log(scrolled);
@@ -63,7 +63,7 @@ const Navbar = ({ scrollChange }) => {
     return () => {
       document.removeEventListener("scroll", listener);
     };
-  }, [scrollState]);
+  }, [scrollState, smallDevice, scrollChange]);
 
   return (
     <div
@@ -75,7 +75,7 @@ const Navbar = ({ scrollChange }) => {
         <LogoMilan scrollState={scrollState} />
         <div className={styles.searchLogin}>
           <Search />
-          {isLogin == false ? (
+          {isLogin === false ? (
             <SignUpToModal setIsLogin={setIsLogin} scrollState={scrollState} />
           ) : (
             <DropDownMenu

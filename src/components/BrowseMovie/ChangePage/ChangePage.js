@@ -7,7 +7,7 @@ const ChangePage = ({ pageChange, maxPage }) => {
   const [smallDevice, setSmallDevice] = useState(false)
   const [extSmallDevice, setExtSmallDevice] = useState(false)
 
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
 
   useEffect(() => {
     if (width < 600) {

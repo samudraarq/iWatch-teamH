@@ -9,7 +9,7 @@ import Navbar from "../components/NavBar/Navbar"
 const Home = () => {
   const [smallDevice, setSmallDevice] = useState(false)
 
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
 
   useEffect(() => {
     if (width < 600) {
