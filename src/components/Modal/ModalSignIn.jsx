@@ -2,6 +2,7 @@ import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import LogoMilan from "../LogoMilan/LogoMilan";
+import styles from './Modal.module.css'
 
 
 const ModalSignIn = ({ handleSubmit, setIsSignup, setIsLogin, handleClose }) => (        
@@ -36,29 +37,25 @@ const ModalSignIn = ({ handleSubmit, setIsSignup, setIsLogin, handleClose }) => 
             }).catch((err)=>(console.log("error")))
           }}
       >
-        
     <Form>
     <LogoMilan />
-      <div>
-        <Field name="email" type="text" placeholder="Email Address" />
+      <div className={styles.inputContainer}>
+        <Field name="email" type="text" placeholder="Email Address" className={styles.input} />
         <ErrorMessage name="email">
           {
-              (msg) => (<div>{msg}</div>)
+              (msg) => (<span className={styles.error}>{msg}</span>)
           }
         </ErrorMessage>
       </div>
-      
-
-      <div>
-        <Field name="password" type="password" placeholder="Password" />
+      <div className={styles.inputContainer}>
+        <Field name="password" type="password" placeholder="Password" className={styles.input} />
         <ErrorMessage name="password">
           {
-            (msg) => <div>{msg}</div>
+            (msg) => <span className={styles.error}>{msg}</span>
           }
         </ErrorMessage>
       </div>
-      
-      <p>
+      <p className={styles.switchForm}>
         {"Doesn't have an account? "}
         <span
           href="#"
@@ -68,7 +65,7 @@ const ModalSignIn = ({ handleSubmit, setIsSignup, setIsLogin, handleClose }) => 
           Sign Up
         </span>
       </p>
-      <button type="submit">Submit</button>
+      <button type="submit" className={styles.btnSubmit}>Submit</button>
     </Form>
   </Formik>
 )

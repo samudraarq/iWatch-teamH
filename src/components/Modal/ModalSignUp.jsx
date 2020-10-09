@@ -2,6 +2,7 @@ import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import LogoMilan from "../LogoMilan/LogoMilan";
+import styles from './Modal.module.css'
 
 
 const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => (
@@ -49,35 +50,35 @@ const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => (
         
     <Form>
     <LogoMilan />
-      <div>
-        <Field name="username" type="text" placeholder="Username" />
+      <div className={styles.inputContainer}>
+        <Field name="username" type="text" placeholder="Username" className={styles.input}/>
         <ErrorMessage name="username">
           {
-            (msg) => <div>{msg}</div>
+            (msg) =><span className={styles.error}>{msg}</span>
           }
         </ErrorMessage>
       </div>
       
-      <div>
-        <Field name="email" type="text" placeholder="Email Address" />
+      <div className={styles.inputContainer}>
+        <Field name="email" type="text" placeholder="Email Address" className={styles.input}/>
         <ErrorMessage name="email">
           {
-            (msg) => <div>{msg}</div>
+            (msg) => <span className={styles.error}>{msg}</span>
           }
         </ErrorMessage>
       </div>
       
 
-      <div>
-        <Field name="password" type="password" placeholder="Password" />      
+      <div className={styles.inputContainer}> 
+        <Field name="password" type="password" placeholder="Password" className={styles.input}/>      
         <ErrorMessage name="password">
           {
-            (msg) => <div>{msg}</div>
+            (msg) => <span className={styles.error}>{msg}</span>
           }
         </ErrorMessage>
       </div>
 
-      <p>
+      <p className={styles.switchForm}>
         {"Already have an account? "}
         <span
           href="#"
@@ -87,7 +88,7 @@ const ModalSignUp = ({ setIsSignup, setIsLogin, handleClose }) => (
           Sign in
         </span>
       </p>
-      <button type="submit">Submit</button>
+      <button type="submit" className={styles.btnSubmit}>Submit</button>
     </Form>
   </Formik>
 )
