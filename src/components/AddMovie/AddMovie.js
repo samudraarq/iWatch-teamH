@@ -1,65 +1,96 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Field, Form, Formik, ErrorMessage } from "formik";
 // import * as Yup from "yup";
 import axios from "axios";
 import qs from "qs";
-import Footer from "../Footer/Footer";
-import Navbar from "../NavBar/Navbar";
 import styles from "./AddMovie.module.css";
 
-const AddMovie = () => {
+const AddMovie = ({ movieId }) => {
   const [addSuccess, setAddSuccess] = useState(false);
   const [addActorSuccess, setAddActorSuccess] = useState(false);
   const [addCharSuccess, setAddCharSuccess] = useState(false);
-  const [movieId, setMovieId] = useState("");
   const [returnMovId, setReturnMovId] = useState("");
   const [movieDir, setMovieDir] = useState("");
   const [movie, setMovie] = useState({});
   const [trailer, setTrailer] = useState([]);
   const [casts, setCasts] = useState([]);
 
-  const handleChange = (e) => {
-    setMovieId(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setMovieId(e.target.value);
+  // };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (e.key === "Enter") {
-      const getMovies = async () => {
-        // get movie detail
-        const resMovie = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-        );
-        const resultMovie = await resMovie.data;
-        // console.log(resultMovie);
-        setMovie(resultMovie);
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   if (e.key === "Enter") {
+  //     const getMovies = async () => {
+  //       // get movie detail
+  //       const resMovie = await axios.get(
+  //         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  //       );
+  //       const resultMovie = await resMovie.data;
+  //       // console.log(resultMovie);
+  //       setMovie(resultMovie);
 
-        // get cast and director
-        const resCast = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-        );
-        const resultCast = await resCast.data;
-        // console.log("getMovies -> resultCast", resultCast);
-        const director = resultCast.crew.find(
-          (crew) => crew.job === "Director"
-        );
-        setMovieDir(director.name);
+  //       // get cast and director
+  //       const resCast = await axios.get(
+  //         `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  //       );
+  //       const resultCast = await resCast.data;
+  //       // console.log("getMovies -> resultCast", resultCast);
+  //       const director = resultCast.crew.find(
+  //         (crew) => crew.job === "Director"
+  //       );
+  //       setMovieDir(director.name);
 
-        const movieCasts = resultCast.cast.slice(0, 10);
-        console.log(movieCasts);
-        setCasts(movieCasts);
+  //       const movieCasts = resultCast.cast.slice(0, 10);
+  //       console.log(movieCasts);
+  //       setCasts(movieCasts);
 
-        // get trailer
-        const resTrailer = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-        );
-        const resultTrailer = await resTrailer.data;
-        // console.log(resultTrailer);
-        setTrailer(resultTrailer.results);
-      };
-      getMovies();
-    }
-  };
+  //       // get trailer
+  //       const resTrailer = await axios.get(
+  //         `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  //       );
+  //       const resultTrailer = await resTrailer.data;
+  //       // console.log(resultTrailer);
+  //       setTrailer(resultTrailer.results);
+  //     };
+  //     getMovies();
+  //   }
+  // };
+
+  useEffect(() => {
+    const getMovies = async () => {
+      // get movie detail
+      const resMovie = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      );
+      const resultMovie = await resMovie.data;
+      // console.log(resultMovie);
+      setMovie(resultMovie);
+
+      // get cast and director
+      const resCast = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      );
+      const resultCast = await resCast.data;
+      // console.log("getMovies -> resultCast", resultCast);
+      const director = resultCast.crew.find((crew) => crew.job === "Director");
+      setMovieDir(director.name);
+
+      const movieCasts = resultCast.cast.slice(0, 10);
+      console.log(movieCasts);
+      setCasts(movieCasts);
+
+      // get trailer
+      const resTrailer = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      );
+      const resultTrailer = await resTrailer.data;
+      // console.log(resultTrailer);
+      setTrailer(resultTrailer.results);
+    };
+    getMovies();
+  }, []);
 
   const youtubeLink = trailer.find(
     (trail) => trail.site === "YouTube" && trail.type === "Trailer"
@@ -202,16 +233,15 @@ const AddMovie = () => {
 
   return (
     <>
-      <Navbar />
       <div className={styles.container}>
-        <input
+        {/* <input
           type="text"
           onChange={handleChange}
           onKeyUp={submitHandler}
           value={movieId}
           className={styles.input}
           placeholder="input movie id from tmdb"
-        />
+        /> */}
 
         <p className={styles.title}>{movie.title}</p>
 
@@ -389,7 +419,6 @@ const AddMovie = () => {
           <span className={styles.success}>Success Adding Characters</span>
         )}
       </div>
-      <Footer />
     </>
   );
 };
