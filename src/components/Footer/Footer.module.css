@@ -24,6 +24,7 @@
 .navFooter .navLink {
   font-size: 1.3rem;
   list-style: none;
+  text-decoration: none;
   padding: 0.3rem 1rem;
   margin: 0.1rem;
   border-radius: 3px;
