@@ -22,12 +22,25 @@ const AddMovie = () => {
     e.preventDefault();
     if (e.key === "Enter") {
       const getMovies = async () => {
+        // get movie detail
         const resMovie = await axios.get(
           `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
         const resultMovie = await resMovie.data;
         // console.log(resultMovie);
         setMovie(resultMovie);
+
+        // get cast and director
+        const resCast = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+        );
+        const resultCast = await resCast.data.crew;
+        // console.log(resultCast);
+        const director = resultCast.find((crew) => crew.job === "Director");
+        // console.log(director);
+        setMovieDir(director.name);
+
+        // get trailer
         const resTrailer = await axios.get(
           `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
@@ -45,48 +58,47 @@ const AddMovie = () => {
 
   const submitHandlerToDb = (e) => {
     e.preventDefault();
-    if (e.key === "Enter") {
-      //   const getMovies = async () => {
-      //     const res = await axios.get(
-      //       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      //     );
-      //     const result = await res.data;
-      //     console.log(result);
-      //     setMovie(result);
-      //   };
-      //   getMovies();
-      let data = {
-        img_url_backdrop: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
-        img_url_poster: "https://image.tmdb.org/t/p/w500/" + movie.poster_path,
-        title: movie.title,
-        genre: movie.genres[0].name,
-        date_data_in: new Date(),
-        release_date: movie.release_date,
-        synopsis: movie.overview,
-        director: movieDir,
-        budget: movie.budget,
-        trailer_url: "https://www.youtube.com/watch?v=" + youtubeLink.key,
-      };
 
-      const dataQs = qs.stringify(data);
-      let config = {
-        method: "post",
-        url: `https://aqueous-savannah-95860.herokuapp.com/movie`,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        data: dataQs,
-      };
-      axios(config)
-        .then(function (response) {
-          console.log(response);
-          setAddSuccess(true);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      console.log(data);
-    }
+    //   const getMovies = async () => {
+    //     const res = await axios.get(
+    //       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    //     );
+    //     const result = await res.data;
+    //     console.log(result);
+    //     setMovie(result);
+    //   };
+    //   getMovies();
+    let data = {
+      img_url_backdrop: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+      img_url_poster: "https://image.tmdb.org/t/p/w500/" + movie.poster_path,
+      title: movie.title,
+      genre: movie.genres[0].name,
+      date_data_in: new Date(),
+      release_date: movie.release_date,
+      synopsis: movie.overview,
+      director: movieDir,
+      budget: movie.budget,
+      trailer_url: "https://www.youtube.com/watch?v=" + youtubeLink.key,
+    };
+
+    const dataQs = qs.stringify(data);
+    let config = {
+      method: "post",
+      url: `https://aqueous-savannah-95860.herokuapp.com/movie`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: dataQs,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(response);
+        setAddSuccess(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    console.log(data);
   };
 
   return (
@@ -102,11 +114,12 @@ const AddMovie = () => {
 
         <p style={{ color: "white" }}>{movie.title}</p>
 
-        <input
+        {/* <input
           type="text"
           onChange={(e) => setMovieDir(e.target.value)}
           onKeyUp={submitHandlerToDb}
-        />
+        /> */}
+        <button onClick={submitHandlerToDb}>Submit</button>
 
         {/* <Formik
           initialValues={{
