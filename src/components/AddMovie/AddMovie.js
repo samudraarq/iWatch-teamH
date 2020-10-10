@@ -112,6 +112,7 @@ const AddMovie = () => {
   };
 
   const submitHandlerAddActor = () => {
+    // Add Actor data
     casts.forEach((cast) => {
       let data = {
         img_url: "https://image.tmdb.org/t/p/w500/" + cast.profile_path,
@@ -131,6 +132,7 @@ const AddMovie = () => {
           console.log(response);
           setAddActorSuccess(true);
 
+          // ADD Character DATA id no Actor has been added before
           let charData = {
             MovieId: returnMovId,
             ActorId: response.data.id,
@@ -155,6 +157,44 @@ const AddMovie = () => {
         })
         .catch(function (error) {
           console.log(error);
+
+          // Add Character data if actor has been added before
+
+          axios
+            .get(`https://aqueous-savannah-95860.herokuapp.com/actor`)
+            .then((res) => {
+              console.log(res.data);
+              const actorIdFound = res.data.find(
+                (act) => act.name === cast.name
+              );
+              console.log(
+                "submitHandlerAddActor -> actorIdFound",
+                actorIdFound
+              );
+
+              let charData = {
+                MovieId: returnMovId,
+                ActorId: actorIdFound.id,
+              };
+              console.log("submitHandlerAddActor -> charData", charData);
+
+              let configChar = {
+                method: "post",
+                url: `https://aqueous-savannah-95860.herokuapp.com/character`,
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                data: qs.stringify(charData),
+              };
+
+              axios(configChar)
+                .then(function (res) {
+                  console.log("res", res);
+                  console.log("charData", charData);
+                  setAddCharSuccess(true);
+                })
+                .catch((err) => console.log(err));
+            });
         });
       console.log(data);
     });
