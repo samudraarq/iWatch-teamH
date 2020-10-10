@@ -17,9 +17,6 @@ function App() {
           <Route path="/search/:inputSearch">
             <SearchPages />
           </Route>
-          <Route path="/all">
-            <Home />
-          </Route>
           <Route path="/">
             <Redirect to="/all" />
             <Home />

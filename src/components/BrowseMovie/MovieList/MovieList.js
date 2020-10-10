@@ -21,7 +21,7 @@ const MovieList = ({ categories, allMovies }) => {
         const result = await res.data;
         // console.log(result.results);
         // setMaxPage(result.total_pages);
-        setMovies(result.results);
+        setMovies(result);
         // } else {
         //   const res = await axios.get(
         //     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}&with_genres=${category}`
