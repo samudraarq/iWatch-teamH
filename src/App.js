@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
 import SearchPages from "./pages/SearchPages";
+import AddMovie from "./components/AddMovie/AddMovie";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route path="/search/:inputSearch">
             <SearchPages />
+          </Route>
+          <Route path="/movie/add">
+            <AddMovie />
           </Route>
           <Route path="/">
             <Redirect to="/all" />

@@ -6,6 +6,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import playStoreLogo from "./google-play-badge.png";
 import AppStoreLogo from "./Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -26,6 +27,7 @@ const Footer = () => {
             <li>Layanan</li>
             <li>Karir</li>
             <li>Pusat Media</li>
+            <Link to="/movie/add">Tambah Movie</Link>
           </ul>
         </div>
         <div className={styles.socialMedia}>
