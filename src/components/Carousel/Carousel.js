@@ -13,20 +13,20 @@ const Carousel = () => {
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+        `https://aqueous-savannah-95860.herokuapp.com/movie/1`
       );
       const result = await res.data;
-      setMovies(result.results.slice(0, 5));
+      setMovies(result.slice(0, 5));
     };
     getMovies();
   }, []);
 
-  const slides = movies.map((movie, idx) => (
-    <SwiperSlide key={idx}>
+  const slides = movies.map((movie) => (
+    <SwiperSlide key={movie.id}>
       <div className={styles.imgContainer}>
         <img
           className={styles.image}
-          src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
+          src={movie.img_url_backdrop}
           alt={"movie poster"}
         />
       </div>
