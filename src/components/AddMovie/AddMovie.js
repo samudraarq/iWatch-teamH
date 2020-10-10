@@ -9,10 +9,14 @@ import styles from "./AddMovie.module.css";
 
 const AddMovie = () => {
   const [addSuccess, setAddSuccess] = useState(false);
+  const [addActorSuccess, setAddActorSuccess] = useState(false);
+  const [addCharSuccess, setAddCharSuccess] = useState(false);
   const [movieId, setMovieId] = useState("");
+  const [returnMovId, setReturnMovId] = useState("");
   const [movieDir, setMovieDir] = useState("");
   const [movie, setMovie] = useState({});
   const [trailer, setTrailer] = useState([]);
+  const [casts, setCasts] = useState([]);
 
   const handleChange = (e) => {
     setMovieId(e.target.value);
@@ -34,11 +38,16 @@ const AddMovie = () => {
         const resCast = await axios.get(
           `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
         );
-        const resultCast = await resCast.data.crew;
-        // console.log(resultCast);
-        const director = resultCast.find((crew) => crew.job === "Director");
-        // console.log(director);
+        const resultCast = await resCast.data;
+        // console.log("getMovies -> resultCast", resultCast);
+        const director = resultCast.crew.find(
+          (crew) => crew.job === "Director"
+        );
         setMovieDir(director.name);
+
+        const movieCasts = resultCast.cast.slice(0, 10);
+        console.log(movieCasts);
+        setCasts(movieCasts);
 
         // get trailer
         const resTrailer = await axios.get(
@@ -93,12 +102,62 @@ const AddMovie = () => {
     axios(config)
       .then(function (response) {
         console.log(response);
+        setReturnMovId(response.data.id);
         setAddSuccess(true);
       })
       .catch(function (error) {
         console.log(error);
       });
     console.log(data);
+  };
+
+  const submitHandlerAddActor = () => {
+    casts.forEach((cast) => {
+      let data = {
+        img_url: "https://image.tmdb.org/t/p/w500/" + cast.profile_path,
+        name: cast.name,
+      };
+      const dataQs = qs.stringify(data);
+      let config = {
+        method: "post",
+        url: `https://aqueous-savannah-95860.herokuapp.com/actor`,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        data: dataQs,
+      };
+      axios(config)
+        .then(function (response) {
+          console.log(response);
+          setAddActorSuccess(true);
+
+          let charData = {
+            MovieId: returnMovId,
+            ActorId: response.data.id,
+          };
+
+          let configChar = {
+            method: "post",
+            url: `https://aqueous-savannah-95860.herokuapp.com/character`,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            data: qs.stringify(charData),
+          };
+
+          axios(configChar)
+            .then(function (res) {
+              console.log("res", res);
+              console.log("charData", charData);
+              setAddCharSuccess(true);
+            })
+            .catch((err) => console.log(err));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(data);
+    });
   };
 
   return (
@@ -120,6 +179,7 @@ const AddMovie = () => {
           onKeyUp={submitHandlerToDb}
         /> */}
         <button onClick={submitHandlerToDb}>Submit</button>
+        <button onClick={submitHandlerAddActor}>Add Actor</button>
 
         {/* <Formik
           initialValues={{
@@ -274,6 +334,8 @@ const AddMovie = () => {
           </Form>
         </Formik> */}
         {addSuccess && <span>Success Adding a Movie</span>}
+        {addActorSuccess && <span>Success Adding Actors</span>}
+        {addCharSuccess && <span>Success Adding Characters</span>}
       </div>
       <Footer />
     </>
