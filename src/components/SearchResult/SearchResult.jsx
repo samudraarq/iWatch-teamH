@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import ChangePage from "../BrowseMovie/ChangePage/ChangePage";
 import styles from "./SearchResult.module.css";
 
 const SearchResult = () => {

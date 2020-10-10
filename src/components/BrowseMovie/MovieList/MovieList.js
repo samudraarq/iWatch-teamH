@@ -6,7 +6,7 @@ import styles from "./MovieList.module.css";
 
 const MovieList = ({ categories, allMovies }) => {
   const [movies, setMovies] = useState([]);
-  const [maxPage, setMaxPage] = useState(10);
+  const [maxPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   const { category } = useParams();

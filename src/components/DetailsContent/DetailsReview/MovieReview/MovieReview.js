@@ -2,7 +2,7 @@ import { Rating } from "@material-ui/lab";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import InfiniteScroll from "react-infinite-scroller";
+// import InfiniteScroll from "react-infinite-scroller";
 import axios from "axios";
 import styles from "./MovieReview.module.css";
 import { useParams } from "react-router-dom";
@@ -40,7 +40,7 @@ const MovieReview = ({ newReview }) => {
       .catch(function (error) {
         console.log(error);
       });
-  }, [newReview]);
+  }, [newReview, id]);
 
   // const fetchMoreData = (e) => {
   //   // e = page from 1

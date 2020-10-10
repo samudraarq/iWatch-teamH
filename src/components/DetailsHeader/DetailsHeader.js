@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./DetailsHeader.module.css";
-import Rating from "@material-ui/lab/Rating";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import AddIcon from "@material-ui/icons/Add";
 
 const DetailsHeader = ({ movie }) => {
-  const [trailer, setTrailer] = useState([]);
+  // const [trailer, setTrailer] = useState([]);
 
-  const { id } = useParams();
+  // const { id } = useParams();
 
   // useEffect(() => {
   //   const getMovies = async () => {

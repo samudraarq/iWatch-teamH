@@ -21,8 +21,8 @@ const Carousel = () => {
     getMovies();
   }, []);
 
-  const slides = movies.map((movie) => (
-    <SwiperSlide key={movie.id}>
+  const slides = movies.map((movie, idx) => (
+    <SwiperSlide key={idx}>
       <div className={styles.imgContainer}>
         <img
           className={styles.image}

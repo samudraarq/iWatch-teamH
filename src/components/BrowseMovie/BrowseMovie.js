@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import axios from "axios";
 import styles from "./BrowseMovie.module.css";
 import CategorySelect from "./CategorySelect/CategorySelect";
 import MovieList from "./MovieList/MovieList";
 
 const BrowseMovie = () => {
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     { name: "Animation", id: "1" },
     { name: "Action", id: "2" },
     { name: "Adventure", id: "3" },
