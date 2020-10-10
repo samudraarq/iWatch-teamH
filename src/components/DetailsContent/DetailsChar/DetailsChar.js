@@ -11,11 +11,11 @@ const DetailsChar = () => {
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+        `https://aqueous-savannah-95860.herokuapp.com/character/${id}`
       );
       const result = await res.data;
       // console.log(result.cast);
-      setChars(result.cast);
+      setChars(result);
     };
     getMovies();
   }, [id]);
@@ -28,13 +28,13 @@ const DetailsChar = () => {
         </p>
       ) : (
         <img
-          src={"https://image.tmdb.org/t/p/w500/" + char.profile_path}
-          alt={char.name}
+          src={char.Actor.img_url}
+          alt={char.Actor.name}
           className={styles.image}
         />
       )}
 
-      <p className={styles.name}>{char.name}</p>
+      <p className={styles.name}>{char.Actor.name}</p>
     </div>
   ));
 

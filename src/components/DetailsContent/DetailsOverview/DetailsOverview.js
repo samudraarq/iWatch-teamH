@@ -10,7 +10,7 @@ const DetailsOverview = ({ movie }) => {
   });
 
   const songs = movie?.Songs?.map((song) => (
-    <p>
+    <p key={song.id}>
       {song.featured_song} - {song.artist}
     </p>
   ));
