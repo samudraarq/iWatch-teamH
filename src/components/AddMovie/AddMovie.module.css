@@ -10,7 +10,7 @@
   }
 }
 
-.inputContainer {
+/* .inputContainer {
   width: 40rem;
   margin: 2rem 0;
 }
@@ -45,4 +45,39 @@
   font-weight: 700;
   margin-top: 2rem;
   outline: none;
+} */
+
+.input {
+  height: 4rem;
+  width: 100%;
+  outline: none;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 3px;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: white;
+}
+
+.button {
+  background-color: #f6f5f5;
+  color: #3e3639;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 2rem;
+  outline: none;
+}
+
+.success {
+  display: block;
+  font-size: 1.6rem;
+  color: white;
 }

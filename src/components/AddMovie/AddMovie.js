@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import * as Yup from "yup";
+// import { Field, Form, Formik, ErrorMessage } from "formik";
+// import * as Yup from "yup";
 import axios from "axios";
 import qs from "qs";
 import Footer from "../Footer/Footer";
@@ -209,17 +209,23 @@ const AddMovie = () => {
           onChange={handleChange}
           onKeyUp={submitHandler}
           value={movieId}
+          className={styles.input}
+          placeholder="input movie id from tmdb"
         />
 
-        <p style={{ color: "white" }}>{movie.title}</p>
+        <p className={styles.title}>{movie.title}</p>
 
         {/* <input
           type="text"
           onChange={(e) => setMovieDir(e.target.value)}
           onKeyUp={submitHandlerToDb}
         /> */}
-        <button onClick={submitHandlerToDb}>Submit</button>
-        <button onClick={submitHandlerAddActor}>Add Actor</button>
+        <button onClick={submitHandlerToDb} className={styles.button}>
+          Submit
+        </button>
+        <button onClick={submitHandlerAddActor} className={styles.button}>
+          Add Actor
+        </button>
 
         {/* <Formik
           initialValues={{
@@ -373,9 +379,15 @@ const AddMovie = () => {
             </button>
           </Form>
         </Formik> */}
-        {addSuccess && <span>Success Adding a Movie</span>}
-        {addActorSuccess && <span>Success Adding Actors</span>}
-        {addCharSuccess && <span>Success Adding Characters</span>}
+        {addSuccess && (
+          <span className={styles.success}>Success Adding a Movie</span>
+        )}
+        {addActorSuccess && (
+          <span className={styles.success}>Success Adding Actors</span>
+        )}
+        {addCharSuccess && (
+          <span className={styles.success}>Success Adding Characters</span>
+        )}
       </div>
       <Footer />
     </>
