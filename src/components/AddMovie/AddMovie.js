@@ -78,7 +78,7 @@ const AddMovie = ({ movieId }) => {
       setMovieDir(director.name);
 
       const movieCasts = resultCast.cast.slice(0, 10);
-      console.log(movieCasts);
+      // console.log(movieCasts);
       setCasts(movieCasts);
 
       // get trailer
@@ -132,14 +132,14 @@ const AddMovie = ({ movieId }) => {
     };
     axios(config)
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         setReturnMovId(response.data.id);
         setAddSuccess(true);
       })
       .catch(function (error) {
         console.log(error);
       });
-    console.log(data);
+    // console.log(data);
   };
 
   const submitHandlerAddActor = () => {
@@ -160,7 +160,7 @@ const AddMovie = ({ movieId }) => {
       };
       axios(config)
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           setAddActorSuccess(true);
 
           // ADD Character DATA id no Actor has been added before
@@ -180,8 +180,8 @@ const AddMovie = ({ movieId }) => {
 
           axios(configChar)
             .then(function (res) {
-              console.log("res", res);
-              console.log("charData", charData);
+              // console.log("res", res);
+              // console.log("charData", charData);
               setAddCharSuccess(true);
             })
             .catch((err) => console.log(err));
@@ -194,20 +194,16 @@ const AddMovie = ({ movieId }) => {
           axios
             .get(`https://aqueous-savannah-95860.herokuapp.com/actor`)
             .then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
               const actorIdFound = res.data.find(
                 (act) => act.name === cast.name
-              );
-              console.log(
-                "submitHandlerAddActor -> actorIdFound",
-                actorIdFound
               );
 
               let charData = {
                 MovieId: returnMovId,
                 ActorId: actorIdFound.id,
               };
-              console.log("submitHandlerAddActor -> charData", charData);
+              // console.log("submitHandlerAddActor -> charData", charData);
 
               let configChar = {
                 method: "post",
@@ -220,14 +216,14 @@ const AddMovie = ({ movieId }) => {
 
               axios(configChar)
                 .then(function (res) {
-                  console.log("res", res);
-                  console.log("charData", charData);
+                  // console.log("res", res);
+                  // console.log("charData", charData);
                   setAddCharSuccess(true);
                 })
                 .catch((err) => console.log(err));
             });
         });
-      console.log(data);
+      // console.log(data);
     });
   };
 

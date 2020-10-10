@@ -53,10 +53,14 @@ const SearchResult = () => {
     <>
       <Navbar />
       <div className={styles.container}>
-        <h2 className={styles.searchMovies}>Search Movies :</h2>
+        <h2 className={styles.title}>Search Movies :</h2>
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={(e) => setText(e.target.value)} />
-          <button>Search</button>
+          <input
+            type="text"
+            onChange={(e) => setText(e.target.value)}
+            className={styles.input}
+          />
+          <button className={styles.button}>Search</button>
         </form>
 
         {renderAddMovie}
