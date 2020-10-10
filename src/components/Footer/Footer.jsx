@@ -27,7 +27,9 @@ const Footer = () => {
             <li>Layanan</li>
             <li>Karir</li>
             <li>Pusat Media</li>
-            <Link to="/movie/add">Tambah Movie</Link>
+            <Link to="/movie/add" className={styles.navLink}>
+              Tambah Movie
+            </Link>
           </ul>
         </div>
         <div className={styles.socialMedia}>
