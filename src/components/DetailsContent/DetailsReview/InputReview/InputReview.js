@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Rating } from "@material-ui/lab";
+import axios from "axios";
 import styles from "./InputReview.module.css";
 import CheckIcon from "@material-ui/icons/Check";
+import { useParams } from "react-router-dom";
+import qs from "qs";
 
 const InputReview = () => {
   const [text, setText] = useState("");
+  const [rating, setRating] = useState(0);
+
+  const { id } = useParams();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -12,7 +18,30 @@ const InputReview = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(text);
+    const data = qs.stringify({
+      user_rating: rating,
+      comment: text,
+      date_of_comment: new Date(),
+      share: true,
+      userId: 4,
+    });
+    let config = {
+      method: "post",
+      url: `https://aqueous-savannah-95860.herokuapp.com/review/${id}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(response);
+        setText("");
+        setRating("");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -30,6 +59,8 @@ const InputReview = () => {
           precision={0.5}
           onChange={(event, newValue) => {
             // console.log(newValue);
+            setRating(newValue);
+            // console.log(event);
           }}
         />
         <form className={styles.form}>
