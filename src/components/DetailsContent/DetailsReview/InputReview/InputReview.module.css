@@ -30,13 +30,14 @@
 
 .textarea {
   width: 100%;
-  border: 1px solid #3e3639;
-  border-radius: 5px;
+  border: 1px solid #ffffff;
   font-family: inherit;
   padding: 1.5rem;
+  padding-right: 6rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   outline: none;
+  resize: none;
 }
 
 .btn {
@@ -69,4 +70,17 @@
   visibility: visible;
   opacity: 1;
   width: 3rem;
+}
+
+.progress {
+  margin-top: -1.4rem;
+  background-color: #771f00;
+}
+
+.progress > div {
+  background-color: #fe7400;
+}
+
+.textareaContainer {
+  margin-bottom: 2rem;
 }

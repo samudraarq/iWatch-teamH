@@ -68,7 +68,7 @@ const MovieReview = ({ newReview }) => {
           <Rating
             name="review-rating"
             precision={0.5}
-            defaultValue={review.user_rating.toString()}
+            defaultValue={review.user_rating}
             readOnly
           />
         </span>
