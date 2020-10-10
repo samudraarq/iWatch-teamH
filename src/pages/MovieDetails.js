@@ -15,7 +15,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+        `https://aqueous-savannah-95860.herokuapp.com/movie/id/${id}`
       );
       const result = await res.data;
       // console.log(result);

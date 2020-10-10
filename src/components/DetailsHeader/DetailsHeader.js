@@ -11,25 +11,27 @@ const DetailsHeader = ({ movie }) => {
 
   const { id } = useParams();
 
-  useEffect(() => {
-    const getMovies = async () => {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      );
-      const result = await res.data;
-      // console.log(result);
-      setTrailer(result.results);
-    };
-    getMovies();
-  }, [id]);
+  // useEffect(() => {
+  //   const getMovies = async () => {
+  //     const res = await axios.get(
+  //       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  //     );
+  //     const result = await res.data;
+  //     // console.log(result);
+  //     setTrailer(result.results);
+  //   };
+  //   getMovies();
+  // }, [id]);
 
-  const backdropUrl = `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`;
+  const backdropUrl = `url(${movie.img_url_backdrop})`;
   const movieTitle = movie.title;
-  const movieRating = movie.vote_average / 2;
-  const reviewsNumber = movie.vote_count;
-  const youtubeLink = trailer.find(
-    (trail) => trail.site === "YouTube" && trail.type === "Trailer"
-  );
+  // const movieRating = movie.vote_average / 2;
+  // const reviewsNumber = movie.vote_count;
+  // const youtubeLink = trailer.find(
+  //   (trail) => trail.site === "YouTube" && trail.type === "Trailer"
+  // );
+
+  const trailerLink = movie.trailer_url;
 
   const bdrop = (
     <div
@@ -42,7 +44,7 @@ const DetailsHeader = ({ movie }) => {
     >
       <div className={styles.container}>
         <h2 className={styles.title}>{movieTitle}</h2>
-        <div className={styles.reviews}>
+        {/* <div className={styles.reviews}>
           <Rating
             name="movie-rating"
             defaultValue={movieRating}
@@ -51,13 +53,14 @@ const DetailsHeader = ({ movie }) => {
             readOnly
           />
           <span className={styles.reviewsNumber}>{reviewsNumber} reviews</span>
-        </div>
-        <p className={styles.overview}>{movie.overview}</p>
+        </div> */}
+        <p className={styles.overview}>{movie.synopsis}</p>
         <div className={styles.btnGroup}>
-          {youtubeLink && (
+          {trailerLink && (
             <a
               className={styles.trailerLink}
-              href={"https://www.youtube.com/watch?v=" + youtubeLink.key}
+              // href={"https://www.youtube.com/watch?v=" + youtubeLink.key}
+              href={trailerLink}
               rel="noopener noreferrer"
               target="_blank"
             >
