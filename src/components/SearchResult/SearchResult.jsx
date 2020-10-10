@@ -6,23 +6,23 @@ import styles from "./SearchResult.module.css";
 
 const SearchResult = () => {
   const [movies, setMovies] = useState([]);
-  const [maxPage, setMaxPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [maxPage, setMaxPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
 
   const { inputSearch } = useParams();
 
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${inputSearch}&page=${currentPage}`
+        `https://aqueous-savannah-95860.herokuapp.com/movie/find?search=${inputSearch}`
       );
       const result = await res.data;
       // console.log(result.results);
-      setMaxPage(result.total_pages);
-      setMovies(result.results);
+      // setMaxPage(result.total_pages);
+      setMovies(result);
     };
     getMovies();
-  }, [currentPage, inputSearch]);
+  }, [inputSearch]);
 
   const movRender = movies.map((movie) => {
     return (
@@ -39,13 +39,14 @@ const SearchResult = () => {
           <div className={styles.imageContainer}>
             <figure className={styles.hoverEffect}>
               <img
-                src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                // src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                src={movie.img_url_poster}
                 alt="movie poster"
                 className={styles.image}
               />
               <figcaption>
                 <h2>{movie.title}</h2>
-                <p>{movie.overview.slice(0, 100)}...</p>
+                {/* <p>{movie.overview.slice(0, 100)}...</p> */}
               </figcaption>
             </figure>
           </div>
@@ -55,16 +56,16 @@ const SearchResult = () => {
     );
   });
 
-  const handlePageChange = (e) => {
-    const selectedPage = e.selected + 1;
-    setCurrentPage(selectedPage);
-  };
+  // const handlePageChange = (e) => {
+  //   const selectedPage = e.selected + 1;
+  //   setCurrentPage(selectedPage);
+  // };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.searchMovies}>Search Movies : {inputSearch}</h2>
       <div className={styles.listContainer}>{movRender}</div>
-      <ChangePage pageChange={handlePageChange} maxPage={maxPage} />
+      {/* <ChangePage pageChange={handlePageChange} maxPage={maxPage} /> */}
     </div>
   );
 };
