@@ -9,6 +9,12 @@ const DetailsOverview = ({ movie }) => {
     minimumFractionDigits: 2,
   });
 
+  const songs = movie?.Songs?.map((song) => (
+    <p>
+      {song.featured_song} - {song.artist}
+    </p>
+  ));
+
   return (
     <div className={styles.overviewContainer}>
       <h3 className={styles.title}>Synopsis</h3>
@@ -17,7 +23,7 @@ const DetailsOverview = ({ movie }) => {
       <ul className={styles.list}>
         <li>Release Date: {moment(movie.release_date).format("DD-MM-YYYY")}</li>
         <li>Director: {movie.director}</li>
-        <li>Featured Song: Pegasus Fantasy</li>
+        <li>Featured Song: {songs}</li>
         <li>Budget: {formatter.format(movie.budget)}</li>
       </ul>
     </div>
