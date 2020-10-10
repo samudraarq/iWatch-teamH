@@ -90,7 +90,7 @@ const AddMovie = ({ movieId }) => {
       setTrailer(resultTrailer.results);
     };
     getMovies();
-  }, []);
+  }, [movieId]);
 
   const youtubeLink = trailer.find(
     (trail) => trail.site === "YouTube" && trail.type === "Trailer"

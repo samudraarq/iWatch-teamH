@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import ChangePage from "../BrowseMovie/ChangePage/ChangePage";
 import AddMovie from "./AddMovie";
@@ -38,7 +37,7 @@ const SearchResult = () => {
       setMovies(result.results);
     };
     getMovies();
-  }, [currentPage]);
+  }, [currentPage, text]);
 
   const handlePageChange = (e) => {
     const selectedPage = e.selected + 1;
