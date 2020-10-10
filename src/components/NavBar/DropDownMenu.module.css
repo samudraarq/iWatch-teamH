@@ -1,3 +1,8 @@
-.zIndex{
-    z-index:10;
+.zIndex {
+  z-index: 10;
+}
+
+.dropdown li {
+  font-size: 1.6rem;
+  color: #3e3639;
 }
