@@ -22,14 +22,14 @@ const MovieList = ({ categories, allMovies }) => {
         // console.log(result.results);
         // setMaxPage(result.total_pages);
         setMovies(result);
-        // } else {
-        //   const res = await axios.get(
-        //     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${currentPage}&with_genres=${category}`
-        //   );
-        //   const result = await res.data;
-        //   // console.log(result.results);
-        //   setMaxPage(result.total_pages);
-        //   setMovies(result.results);
+      } else {
+        const res = await axios.get(
+          `https://aqueous-savannah-95860.herokuapp.com/movie/genre/${category}/${currentPage}`
+        );
+        const result = await res.data;
+        // console.log(result.results);
+        // setMaxPage(result.total_pages);
+        setMovies(result);
       }
     };
     getMovies();

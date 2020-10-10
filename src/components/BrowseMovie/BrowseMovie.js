@@ -6,18 +6,24 @@ import CategorySelect from "./CategorySelect/CategorySelect";
 import MovieList from "./MovieList/MovieList";
 
 const BrowseMovie = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([
+    { name: "Animation", id: "1" },
+    { name: "Action", id: "2" },
+    { name: "Adventure", id: "3" },
+    { name: "Thriller", id: "4" },
+    { name: "Crime", id: "5" },
+  ]);
 
-  useEffect(() => {
-    const getMovies = async () => {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-      );
-      const result = await res.data;
-      setCategories(result.genres);
-    };
-    getMovies();
-  }, []);
+  // useEffect(() => {
+  //   const getMovies = async () => {
+  //     const res = await axios.get(
+  //       `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  //     );
+  //     const result = await res.data;
+  //     setCategories(result.genres);
+  //   };
+  //   getMovies();
+  // }, []);
 
   return (
     <div className={styles.container}>
