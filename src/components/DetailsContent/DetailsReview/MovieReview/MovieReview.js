@@ -8,7 +8,7 @@ import styles from "./MovieReview.module.css";
 import { useParams } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 
-const MovieReview = () => {
+const MovieReview = ({ newReview }) => {
   const [reviews, setReviews] = useState([]);
   // const [hasMoreData, setHasMoreData] = useState(true);
 
@@ -40,7 +40,7 @@ const MovieReview = () => {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [newReview]);
 
   // const fetchMoreData = (e) => {
   //   // e = page from 1
