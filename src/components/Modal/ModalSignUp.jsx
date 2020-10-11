@@ -8,9 +8,13 @@ import { UserContext } from "../Context/UserContext";
 const ModalSignUp = ({ setIsSignup, handleClose }) => {
   const [errorMsg, setErrorMsg] = useState("");
 
-  const { setIsLogin, setUserToken, setUsername, setUserEmail } = useContext(
-    UserContext
-  );
+  const {
+    setIsLogin,
+    setUserToken,
+    setUsername,
+    setUserEmail,
+    setUserId,
+  } = useContext(UserContext);
 
   return (
     <Formik
@@ -41,13 +45,15 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
         })
           .then((res) => res.json())
           .then((result) => {
-            if (result.token) {
+            if (result.access_token) {
               console.log("Success:", result);
               localStorage.setItem("token", result.access_token);
+              localStorage.setItem("userId", result.userId);
               localStorage.setItem("username", result.username);
               localStorage.setItem("email", result.email);
               setIsLogin(true);
               setUserToken(result.access_token);
+              setUserId(result.userId);
               setUsername(result.username);
               setUserEmail(result.email);
               handleClose();
