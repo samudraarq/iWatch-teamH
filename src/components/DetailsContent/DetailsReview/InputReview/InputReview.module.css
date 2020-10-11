@@ -10,6 +10,7 @@
   object-fit: cover;
   border-radius: 50%;
   margin-top: 1rem;
+  font-size: 5rem;
 }
 
 .review {

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Rating } from "@material-ui/lab";
 import styles from "./InputReview.module.css";
 import CheckIcon from "@material-ui/icons/Check";
-import { LinearProgress } from "@material-ui/core";
+import { Avatar, LinearProgress } from "@material-ui/core";
+import { UserContext } from "../../../Context/UserContext";
 
 const InputReview = ({
   handleChange,
@@ -11,15 +12,15 @@ const InputReview = ({
   rating,
   text,
 }) => {
+  const { username } = useContext(UserContext);
+
   return (
     <div className={styles.reviewContainer}>
-      <img
-        src="https://picsum.photos/100"
-        alt="prof-pic"
-        className={styles.img}
-      />
+      <Avatar className={styles.img} alt="prof-pic">
+        {username[0]}
+      </Avatar>
       <div className={styles.review}>
-        <p className={styles.name}>My name</p>
+        <p className={styles.name}>{username}</p>
         <Rating
           name="hover-feedback"
           size="large"
