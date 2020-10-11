@@ -15,7 +15,7 @@ const Carousel = () => {
       const res = await axios.get(
         `https://aqueous-savannah-95860.herokuapp.com/movie/1`
       );
-      const result = await res.data;
+      const result = await res.data.movie;
       setMovies(result.slice(0, 5));
     };
     getMovies();

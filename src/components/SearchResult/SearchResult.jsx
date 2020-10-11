@@ -2,26 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./SearchResult.module.css";
+import ChangePage from "../BrowseMovie/ChangePage/ChangePage";
 
 const SearchResult = () => {
   const [movies, setMovies] = useState([]);
-  // const [maxPage, setMaxPage] = useState(1);
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const { inputSearch } = useParams();
 
   useEffect(() => {
     const getMovies = async () => {
       const res = await axios.get(
-        `https://aqueous-savannah-95860.herokuapp.com/movie/find?search=${inputSearch}`
+        `https://aqueous-savannah-95860.herokuapp.com/movie/find/${currentPage}?search=${inputSearch}`
       );
       const result = await res.data;
-      // console.log(result.results);
-      // setMaxPage(result.total_pages);
-      setMovies(result);
+      // console.log(result);
+      setMaxPage(result.total_page);
+      setMovies(result.movie);
     };
     getMovies();
-  }, [inputSearch]);
+  }, [inputSearch, currentPage]);
 
   const movRender = movies.map((movie) => {
     return (
@@ -45,7 +46,7 @@ const SearchResult = () => {
               />
               <figcaption>
                 <h2>{movie.title}</h2>
-                {/* <p>{movie.overview.slice(0, 100)}...</p> */}
+                <p>{movie.synopsis.slice(0, 100)}...</p>
               </figcaption>
             </figure>
           </div>
@@ -55,16 +56,16 @@ const SearchResult = () => {
     );
   });
 
-  // const handlePageChange = (e) => {
-  //   const selectedPage = e.selected + 1;
-  //   setCurrentPage(selectedPage);
-  // };
+  const handlePageChange = (e) => {
+    const selectedPage = e.selected + 1;
+    setCurrentPage(selectedPage);
+  };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.searchMovies}>Search Movies : {inputSearch}</h2>
       <div className={styles.listContainer}>{movRender}</div>
-      {/* <ChangePage pageChange={handlePageChange} maxPage={maxPage} /> */}
+      <ChangePage pageChange={handlePageChange} maxPage={maxPage} />
     </div>
   );
 };

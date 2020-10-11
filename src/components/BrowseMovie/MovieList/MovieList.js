@@ -6,7 +6,7 @@ import styles from "./MovieList.module.css";
 
 const MovieList = ({ categories, allMovies }) => {
   const [movies, setMovies] = useState([]);
-  const [maxPage] = useState(10);
+  const [maxPage, setMaxPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
   const { category } = useParams();
@@ -20,16 +20,16 @@ const MovieList = ({ categories, allMovies }) => {
         );
         const result = await res.data;
         // console.log(result.results);
-        // setMaxPage(result.total_pages);
-        setMovies(result);
+        setMaxPage(result.total_page);
+        setMovies(result.movie);
       } else {
         const res = await axios.get(
           `https://aqueous-savannah-95860.herokuapp.com/movie/genre/${category}/${currentPage}`
         );
         const result = await res.data;
         // console.log(result.results);
-        // setMaxPage(result.total_pages);
-        setMovies(result);
+        setMaxPage(result.total_page);
+        setMovies(result.movie);
       }
     };
     getMovies();
