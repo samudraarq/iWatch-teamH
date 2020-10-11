@@ -6,7 +6,9 @@ import styles from "./Modal.module.css";
 import { UserContext } from "../Context/UserContext";
 
 const ModalSignIn = ({ setIsSignup, handleClose }) => {
-  const { setIsLogin, setUserToken, setUsername } = useContext(UserContext);
+  const { setIsLogin, setUserToken, setUsername, setUserEmail } = useContext(
+    UserContext
+  );
 
   return (
     <Formik
@@ -33,9 +35,11 @@ const ModalSignIn = ({ setIsSignup, handleClose }) => {
             console.log("Success:", result);
             localStorage.setItem("token", result.access_token);
             localStorage.setItem("username", result.username);
+            localStorage.setItem("email", result.email);
             setIsLogin(true);
             setUserToken(result.access_token);
             setUsername(result.username);
+            setUserEmail(result.email);
             handleClose();
           })
           .catch((err) => console.log("error", err));

@@ -6,6 +6,7 @@ const UserContextProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [userToken, setUserToken] = useState("");
   const [username, setUsername] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
   return (
     <UserContext.Provider
@@ -13,9 +14,11 @@ const UserContextProvider = ({ children }) => {
         isLogin,
         userToken,
         username,
+        userEmail,
         setIsLogin,
         setUserToken,
         setUsername,
+        setUserEmail,
       }}
     >
       {children}

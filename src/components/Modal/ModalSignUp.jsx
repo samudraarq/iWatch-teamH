@@ -6,7 +6,9 @@ import styles from "./Modal.module.css";
 import { UserContext } from "../Context/UserContext";
 
 const ModalSignUp = ({ setIsSignup, handleClose }) => {
-  const { setIsLogin, setUserToken, setUsername } = useContext(UserContext);
+  const { setIsLogin, setUserToken, setUsername, setUserEmail } = useContext(
+    UserContext
+  );
 
   return (
     <Formik
@@ -14,8 +16,8 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
         username: "",
         email: "",
         password: "",
-        fullname: "default fullname",
-        bio: "default bio",
+        fullname: "",
+        bio: "",
       }}
       validationSchema={Yup.object({
         username: Yup.string()
@@ -28,7 +30,7 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
       })}
       onSubmit={({ username, email, password, fullname, bio }) => {
         // e.preventDefault()
-        fetch("https://appdoto.herokuapp.com/api/users/", {
+        fetch("https://aqueous-savannah-95860.herokuapp.com/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -38,11 +40,13 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
           .then((res) => res.json())
           .then((result) => {
             console.log("Success:", result);
-            localStorage.setItem("token", result.data.token);
-            localStorage.setItem("username", result.data.username);
+            localStorage.setItem("token", result.access_token);
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("email", result.email);
             setIsLogin(true);
-            setUserToken(result.data.token);
-            setUsername(result.data.username);
+            setUserToken(result.access_token);
+            setUsername(result.username);
+            setUserEmail(result.email);
             handleClose();
           })
           .catch((err) => console.log("error", err));
