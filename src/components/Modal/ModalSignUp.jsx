@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import LogoMilan from "../LogoMilan/LogoMilan";
@@ -6,6 +6,8 @@ import styles from "./Modal.module.css";
 import { UserContext } from "../Context/UserContext";
 
 const ModalSignUp = ({ setIsSignup, handleClose }) => {
+  const [errorMsg, setErrorMsg] = useState("");
+
   const { setIsLogin, setUserToken, setUsername, setUserEmail } = useContext(
     UserContext
   );
@@ -39,15 +41,19 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
         })
           .then((res) => res.json())
           .then((result) => {
-            console.log("Success:", result);
-            localStorage.setItem("token", result.access_token);
-            localStorage.setItem("username", result.username);
-            localStorage.setItem("email", result.email);
-            setIsLogin(true);
-            setUserToken(result.access_token);
-            setUsername(result.username);
-            setUserEmail(result.email);
-            handleClose();
+            if (result.token) {
+              console.log("Success:", result);
+              localStorage.setItem("token", result.access_token);
+              localStorage.setItem("username", result.username);
+              localStorage.setItem("email", result.email);
+              setIsLogin(true);
+              setUserToken(result.access_token);
+              setUsername(result.username);
+              setUserEmail(result.email);
+              handleClose();
+            } else {
+              setErrorMsg(result.msg);
+            }
           })
           .catch((err) => console.log("error", err));
       }}
@@ -96,6 +102,7 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
         <button type="submit" className={styles.btnSubmit}>
           Submit
         </button>
+        <p className={styles.errMsg}>{errorMsg}</p>
       </Form>
     </Formik>
   );
