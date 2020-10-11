@@ -7,6 +7,7 @@ import MovieDetails from "./pages/MovieDetails";
 import SearchPages from "./pages/SearchPages";
 import SearchMovie from "./components/AddMovie/SearchMovie";
 import UserContextProvider from "./components/Context/UserContext";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/movie/add">
               <SearchMovie />
+            </Route>
+            <Route path="/user/edit">
+              <EditProfile />
             </Route>
             <Route path="/">
               <Redirect to="/all" />

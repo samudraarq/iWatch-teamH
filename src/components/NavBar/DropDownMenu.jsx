@@ -9,6 +9,7 @@ import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import FotoProfil from "./FotoProfil";
 import styles from "./DropDownMenu.module.css";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,8 @@ export default function MenuListComposition({ handleLogOut }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
+  const history = useHistory();
+
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -33,6 +36,10 @@ export default function MenuListComposition({ handleLogOut }) {
       return;
     }
     setOpen(false);
+  };
+
+  const openEdit = () => {
+    history.push("/user/edit");
   };
 
   function handleListKeyDown(event) {
@@ -86,7 +93,7 @@ export default function MenuListComposition({ handleLogOut }) {
                   onKeyDown={handleListKeyDown}
                   className={styles.dropdown}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={openEdit}>Profile</MenuItem>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
                   <MenuItem onClick={handleLogOut}>Logout</MenuItem>
                 </MenuList>
