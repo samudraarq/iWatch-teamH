@@ -10,7 +10,6 @@ import { UserContext } from "../Context/UserContext";
 const Navbar = ({ scrollChange }) => {
   // const [isLogin, setIsLogin] = useState(false);
   // const [token, setToken] = useState(localStorage.getItem("token"));
-  const [image, setImage] = useState("");
   const [smallDevice, setSmallDevice] = useState(false);
 
   const { isLogin, setIsLogin, setUserToken, setUsername } = useContext(
@@ -31,13 +30,15 @@ const Navbar = ({ scrollChange }) => {
     // console.log(localStorage.getItem("token"));
     if (localStorage.getItem("token")) {
       setIsLogin(true);
-      setImage(
-        "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/tes-kepribadian-gambar-pertama-11.jpg"
-      );
+      setUserToken(localStorage.getItem("token"));
+      setUsername(localStorage.getItem("username"));
+      // setImage(
+      //   "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/tes-kepribadian-gambar-pertama-11.jpg"
+      // );
     } else {
       setIsLogin(false);
     }
-  }, [setIsLogin]);
+  }, [setIsLogin, setUserToken, setUsername]);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -87,7 +88,6 @@ const Navbar = ({ scrollChange }) => {
           ) : (
             <DropDownMenu
               handleLogOut={handleLogOut}
-              image={image}
               scrollState={scrollState}
             />
           )}

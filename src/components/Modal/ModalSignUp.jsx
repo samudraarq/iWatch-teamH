@@ -38,11 +38,11 @@ const ModalSignUp = ({ setIsSignup, handleClose }) => {
           .then((res) => res.json())
           .then((result) => {
             console.log("Success:", result);
-            localStorage.setItem("token", result.access_token);
-            localStorage.setItem("username", result.username);
+            localStorage.setItem("token", result.data.token);
+            localStorage.setItem("username", result.data.username);
             setIsLogin(true);
-            setUserToken(result.access_token);
-            setUsername(result.username);
+            setUserToken(result.data.token);
+            setUsername(result.data.username);
             handleClose();
           })
           .catch((err) => console.log("error", err));

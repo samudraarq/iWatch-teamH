@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuListComposition({ handleLogOut, image }) {
+export default function MenuListComposition({ handleLogOut }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -60,7 +60,7 @@ export default function MenuListComposition({ handleLogOut, image }) {
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        <FotoProfil image={image} />
+        <FotoProfil />
       </Button>
 
       <Popper

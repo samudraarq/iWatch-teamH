@@ -1,15 +1,11 @@
-import React, {useState} from 'react'
-import {Avatar} from '@material-ui/core'
+import React, { useContext } from "react";
+import { Avatar } from "@material-ui/core";
+import { UserContext } from "../Context/UserContext";
 
-const FotoProfil = ({image}) => {
-    const [username] = useState(localStorage.getItem('username'))    
-    // console.log(typeof username)
+const FotoProfil = () => {
+  const { username } = useContext(UserContext);
 
-    return (                
-        <Avatar src={image} alt="Remy Sharp"  >
-            {image ? "" : username[0] }
-        </Avatar>                       
-    )
-}
+  return <Avatar alt="User Profile Picture">{username[0]}</Avatar>;
+};
 
-export default FotoProfil
+export default FotoProfil;
