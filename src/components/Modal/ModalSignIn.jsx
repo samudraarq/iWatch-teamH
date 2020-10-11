@@ -14,6 +14,7 @@ const ModalSignIn = ({ setIsSignup, handleClose }) => {
     setUsername,
     setUserEmail,
     setUserId,
+    setUserImg,
   } = useContext(UserContext);
 
   return (
@@ -43,11 +44,13 @@ const ModalSignIn = ({ setIsSignup, handleClose }) => {
               localStorage.setItem("token", result.access_token);
               localStorage.setItem("userId", result.userId);
               localStorage.setItem("username", result.username);
+              localStorage.setItem("image", result.image);
               localStorage.setItem("email", result.email);
               setIsLogin(true);
               setUserToken(result.access_token);
               setUserId(result.userId);
               setUsername(result.username);
+              setUserImg(result.image);
               setUserEmail(result.email);
               handleClose();
             } else {

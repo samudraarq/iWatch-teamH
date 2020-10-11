@@ -19,6 +19,7 @@ const Navbar = ({ scrollChange }) => {
     setUsername,
     setUserEmail,
     setUserId,
+    setUserImg,
   } = useContext(UserContext);
 
   const [width] = useWindowSize();
@@ -39,23 +40,33 @@ const Navbar = ({ scrollChange }) => {
       setUsername(localStorage.getItem("username"));
       setUserEmail(localStorage.getItem("email"));
       setUserId(localStorage.getItem("userId"));
+      setUserImg(localStorage.getItem("image"));
       // setImage(
       //   "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/tes-kepribadian-gambar-pertama-11.jpg"
       // );
     } else {
       setIsLogin(false);
     }
-  }, [setIsLogin, setUserToken, setUsername, setUserEmail, setUserId]);
+  }, [
+    setIsLogin,
+    setUserToken,
+    setUsername,
+    setUserEmail,
+    setUserId,
+    setUserImg,
+  ]);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("email");
     localStorage.removeItem("userId");
+    localStorage.removeItem("image");
     setUserToken("");
     setUsername("");
     setUserEmail("");
     setUserId("");
+    setUserImg("");
     setIsLogin(false);
   };
 
