@@ -10,6 +10,7 @@ import NotLoginBox from "./NotLoginBox/NotLoginBox";
 const DetailsReview = () => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(0);
+  const [isShare, setIsShare] = useState(true);
   const [newReview, setNewReview] = useState(0);
 
   const { isLogin, userToken } = useContext(UserContext);
@@ -26,7 +27,7 @@ const DetailsReview = () => {
       user_rating: rating,
       comment: text,
       date_of_comment: new Date(),
-      share: true,
+      share: isShare,
     });
     let config = {
       method: "post",
@@ -58,6 +59,8 @@ const DetailsReview = () => {
           setRating={setRating}
           rating={rating}
           text={text}
+          isShare={isShare}
+          setIsShare={setIsShare}
         />
       ) : (
         <NotLoginBox />

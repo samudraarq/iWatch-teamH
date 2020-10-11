@@ -34,7 +34,7 @@ const MovieReview = ({ newReview }) => {
     axios
       .get(`https://aqueous-savannah-95860.herokuapp.com/review/${id}`)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setReviews(response.data);
       })
       .catch(function (error) {

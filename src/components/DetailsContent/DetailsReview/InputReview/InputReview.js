@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Rating } from "@material-ui/lab";
 import styles from "./InputReview.module.css";
 import CheckIcon from "@material-ui/icons/Check";
-import { Avatar, LinearProgress } from "@material-ui/core";
+import { Avatar, Checkbox, LinearProgress } from "@material-ui/core";
 import { UserContext } from "../../../Context/UserContext";
 
 const InputReview = ({
@@ -11,6 +11,8 @@ const InputReview = ({
   setRating,
   rating,
   text,
+  isShare,
+  setIsShare,
 }) => {
   const { username } = useContext(UserContext);
 
@@ -48,6 +50,16 @@ const InputReview = ({
               className={styles.progress}
             />
           </div>
+          <div className={styles.checkBox}>
+            <input
+              type="checkbox"
+              id="isShare"
+              checked={isShare}
+              onChange={() => setIsShare(!isShare)}
+            />
+            <label for="isShare">Share your review so others can see?</label>
+          </div>
+
           <button onClick={handleClick} className={styles.btn}>
             <div className={styles.textContainer}>
               <CheckIcon className={styles.icon} />

@@ -83,5 +83,15 @@
 }
 
 .textareaContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.checkBox {
+  font-size: 1.6rem;
+  color: #f6f5f5;
+  margin-bottom: 1rem;
+}
+
+.checkBox input {
+  margin-right: 1rem;
 }
