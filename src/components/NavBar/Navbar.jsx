@@ -20,6 +20,7 @@ const Navbar = ({ scrollChange }) => {
     setUserEmail,
     setUserId,
     setUserImg,
+    setUserFullname,
   } = useContext(UserContext);
 
   const [width] = useWindowSize();
@@ -41,6 +42,7 @@ const Navbar = ({ scrollChange }) => {
       setUserEmail(localStorage.getItem("email"));
       setUserId(localStorage.getItem("userId"));
       setUserImg(localStorage.getItem("image"));
+      setUserFullname(localStorage.getItem("full_name"));
       // setImage(
       //   "https://cdn-2.tstatic.net/tribunnews/foto/bank/images/tes-kepribadian-gambar-pertama-11.jpg"
       // );
@@ -54,6 +56,7 @@ const Navbar = ({ scrollChange }) => {
     setUserEmail,
     setUserId,
     setUserImg,
+    setUserFullname,
   ]);
 
   const handleLogOut = () => {
@@ -62,11 +65,13 @@ const Navbar = ({ scrollChange }) => {
     localStorage.removeItem("email");
     localStorage.removeItem("userId");
     localStorage.removeItem("image");
+    localStorage.removeItem("full_name");
     setUserToken("");
     setUsername("");
     setUserEmail("");
     setUserId("");
     setUserImg("");
+    setUserFullname("");
     setIsLogin(false);
   };
 
