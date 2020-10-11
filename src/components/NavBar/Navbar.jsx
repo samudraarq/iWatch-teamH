@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SignUpToModal from "./SignUp/SignUptoModal";
 import styles from "./Navbar.module.css";
 import LogoMilan from "../LogoMilan/LogoMilan";
 import DropDownMenu from "./DropDownMenu";
 import Search from "./Search/Search";
 import useWindowSize from "../Hooks/useWindowResize";
+import { UserContext } from "../Context/UserContext";
 
 const Navbar = ({ scrollChange }) => {
-  const [isLogin, setIsLogin] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
   // const [token, setToken] = useState(localStorage.getItem("token"));
   const [image, setImage] = useState("");
-  const [smallDevice, setSmallDevice] = useState(false)
+  const [smallDevice, setSmallDevice] = useState(false);
+
+  const { isLogin, setIsLogin, setUserToken, setUsername } = useContext(
+    UserContext
+  );
 
   const [width] = useWindowSize();
 
@@ -32,11 +37,13 @@ const Navbar = ({ scrollChange }) => {
     } else {
       setIsLogin(false);
     }
-  }, []);
+  }, [setIsLogin]);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    setUserToken("");
+    setUsername("");
     setIsLogin(false);
   };
 

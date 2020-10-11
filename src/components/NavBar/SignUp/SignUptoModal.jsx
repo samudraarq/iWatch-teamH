@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     backgroundColor: "#3e3639",
     padding: theme.spacing(2, 4, 3),
-    outline: "none"
+    outline: "none",
   },
 }));
 
-const SignUpToModal = ({ setIsLogin, scrollState }) => {
+const SignUpToModal = ({ scrollState }) => {
   const [isSignup, setIsSignup] = useState(true);
   const classes = useStyles();
 
@@ -43,27 +43,17 @@ const SignUpToModal = ({ setIsLogin, scrollState }) => {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-    <div className={styles.modalContainer}>      
-    {isSignup ? (
-        <ModalSignIn
-          setIsSignup={setIsSignup}
-          setIsLogin={setIsLogin}
-          handleClose={handleClose}
-        />
-      ) : (
-        <ModalSignUp
-          setIsSignup={setIsSignup}
-          setIsLogin={setIsLogin}
-          handleClose={handleClose}
-        />
-      )}
+      <div className={styles.modalContainer}>
+        {isSignup ? (
+          <ModalSignIn setIsSignup={setIsSignup} handleClose={handleClose} />
+        ) : (
+          <ModalSignUp setIsSignup={setIsSignup} handleClose={handleClose} />
+        )}
 
-      <button className={styles.btnClose} onClick={handleClose}>
-        Close
-      </button>
-
-    </div>
-
+        <button className={styles.btnClose} onClick={handleClose}>
+          Close
+        </button>
+      </div>
     </div>
   );
 
@@ -83,7 +73,6 @@ const SignUpToModal = ({ setIsLogin, scrollState }) => {
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-       
       >
         {body}
       </Modal>
