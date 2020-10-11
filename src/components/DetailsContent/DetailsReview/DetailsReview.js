@@ -5,6 +5,7 @@ import qs from "qs";
 import InputReview from "./InputReview/InputReview";
 import MovieReview from "./MovieReview/MovieReview";
 import { UserContext } from "../../Context/UserContext";
+import NotLoginBox from "./NotLoginBox/NotLoginBox";
 
 const DetailsReview = () => {
   const [text, setText] = useState("");
@@ -59,7 +60,7 @@ const DetailsReview = () => {
           text={text}
         />
       ) : (
-        <p>User not login</p>
+        <NotLoginBox />
       )}
 
       <MovieReview newReview={newReview} />

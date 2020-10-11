@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  display: flex;
+  margin-top: 4rem;
+  background-color: #cecccc;
+  border-radius: 5px;
+  height: 10rem;
+  color: #3e3639;
+  font-size: 1.6rem;
+}
+
+.text {
+  margin: 3.5rem auto;
+}
