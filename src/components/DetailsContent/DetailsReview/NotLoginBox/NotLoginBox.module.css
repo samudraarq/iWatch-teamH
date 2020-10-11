@@ -12,3 +12,26 @@
 .text {
   margin: 3.5rem auto;
 }
+
+.text span {
+  cursor: pointer;
+  color: #665d61;
+}
+
+.modalContainer {
+  position: relative;
+}
+
+.btnClose {
+  background-color: #3e3639;
+  color: #f6f5f5;
+  padding: 0.5rem 1rem;
+  border: 1px solid #f6f5f5;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 700;
+  position: absolute;
+  top: 4%;
+  right: 0%;
+}
