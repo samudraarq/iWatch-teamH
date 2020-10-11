@@ -61,7 +61,7 @@ const MovieList = ({ categories, allMovies }) => {
               />
               <figcaption>
                 <h2>{movie.title}</h2>
-                {/* <p>{movie.overview.slice(0, 100)}...</p> */}
+                <p>{movie.synopsis.slice(0, 100)}...</p>
               </figcaption>
             </figure>
           </div>
