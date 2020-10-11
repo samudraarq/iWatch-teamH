@@ -34,6 +34,7 @@ const SearchResult = () => {
       );
       const result = await res.data;
       //   console.log(result.results);
+      setMaxPage(result.total_pages);
       setMovies(result.results);
     };
     getMovies();
