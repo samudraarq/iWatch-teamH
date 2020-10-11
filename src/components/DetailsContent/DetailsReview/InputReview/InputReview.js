@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Rating } from "@material-ui/lab";
 import styles from "./InputReview.module.css";
 import CheckIcon from "@material-ui/icons/Check";
-import { Avatar, Checkbox, LinearProgress } from "@material-ui/core";
+import { Avatar, LinearProgress } from "@material-ui/core";
 import { UserContext } from "../../../Context/UserContext";
 
 const InputReview = ({
