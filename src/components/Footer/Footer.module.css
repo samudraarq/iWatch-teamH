@@ -26,11 +26,14 @@
   list-style: none;
   text-decoration: none;
   padding: 0.3rem 1rem;
-  margin: 0.1rem;
   border-radius: 3px;
   color: #3e3639;
   cursor: pointer;
   transition: all 0.2s ease-in;
+}
+
+.navFooter li:last-of-type {
+  margin-bottom: 0.2rem;
 }
 
 .navFooter li:hover,
