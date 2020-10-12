@@ -58,8 +58,12 @@ const MovieReview = ({ newReview }) => {
 
   const movieReviewList = reviews.map((review) => (
     <div className={styles.reviewContainer} key={Math.random()}>
-      <Avatar src={review.user_img} alt={review.name} className={styles.img}>
-        {review.user_img ? "" : review.user.username[0]}
+      <Avatar
+        src={review.user.user_img ? review.user.user_img : ""}
+        alt={review.name}
+        className={styles.img}
+      >
+        {review.user.username[0]}
       </Avatar>
       {/* <img src={review.user_img} alt={review.name} className={styles.img} /> */}
       <div className={styles.review}>

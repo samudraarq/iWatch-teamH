@@ -14,11 +14,15 @@ const InputReview = ({
   isShare,
   setIsShare,
 }) => {
-  const { username } = useContext(UserContext);
+  const { username, userImg } = useContext(UserContext);
 
   return (
     <div className={styles.reviewContainer}>
-      <Avatar className={styles.img} alt="prof-pic">
+      <Avatar
+        className={styles.img}
+        alt="prof-pic"
+        src={userImg ? userImg : ""}
+      >
         {username[0]}
       </Avatar>
       <div className={styles.review}>
@@ -57,7 +61,9 @@ const InputReview = ({
               checked={isShare}
               onChange={() => setIsShare(!isShare)}
             />
-            <label for="isShare">Share your review so others can see?</label>
+            <label htmlFor="isShare">
+              Share your review so others can see?
+            </label>
           </div>
 
           <button onClick={handleClick} className={styles.btn}>

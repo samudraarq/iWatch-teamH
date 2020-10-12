@@ -54,7 +54,11 @@ const DetailsHeader = ({ movie }) => {
             {rating.total_reviewer} reviews
           </span>
         </div>
-        <p className={styles.overview}>{movie.synopsis}</p>
+        <p className={styles.overview}>
+          {movie.synopsis?.length > 400
+            ? movie.synopsis.slice(0, 400) + "..."
+            : movie.synopsis}
+        </p>
         <div className={styles.btnGroup}>
           {trailerLink && (
             <a
