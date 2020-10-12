@@ -68,3 +68,7 @@
 .submitBtn:hover {
   background-color: #f6f5f5;
 }
+
+.uploadProgress {
+  display: inline-block;
+}

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import PublishIcon from "@material-ui/icons/Publish";
+import { CircularProgress } from "@material-ui/core";
 import { UserContext } from "../Context/UserContext";
 import styles from "./EditUserProfile.module.css";
 
@@ -8,8 +9,9 @@ const EditUserProfile = () => {
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
   const [newUserFullname, setNewUserFullname] = useState("");
-
   const [newUserImg, setNewUserImg] = useState(null);
+
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const {
     userId,
@@ -55,7 +57,9 @@ const EditUserProfile = () => {
     formData.append("username", newUserName);
     formData.append("email", newUserEmail);
     formData.append("full_name", newUserFullname);
-    formData.append("user_img", newUserImg, newUserImg.name);
+    if (newUserImg) {
+      formData.append("user_img", newUserImg, newUserImg.name);
+    }
 
     axios
       .put(
@@ -65,6 +69,9 @@ const EditUserProfile = () => {
           onUploadProgress: (ProgressEvent) => {
             console.log(
               "Upload Progress",
+              Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+            );
+            setUploadProgress(
               Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
             );
           },
@@ -145,6 +152,11 @@ const EditUserProfile = () => {
         <button onClick={submitHandler} className={styles.submitBtn}>
           Submit
         </button>
+        <CircularProgress
+          value={uploadProgress}
+          variant="static"
+          className={styles.uploadProgress}
+        />
       </div>
     </div>
   );
