@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
+import PublishIcon from "@material-ui/icons/Publish";
 import { UserContext } from "../Context/UserContext";
 import styles from "./EditUserProfile.module.css";
 
@@ -59,7 +60,15 @@ const EditUserProfile = () => {
     axios
       .put(
         `https://aqueous-savannah-95860.herokuapp.com/users/edit/${userId}`,
-        formData
+        formData,
+        {
+          onUploadProgress: (ProgressEvent) => {
+            console.log(
+              "Upload Progress",
+              Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+            );
+          },
+        }
       )
       .then((res) => {
         console.log(res);
@@ -77,29 +86,66 @@ const EditUserProfile = () => {
       });
   };
 
+  const fileInput = useRef(null);
+
   return (
     <div className={styles.container}>
-      <img src={userImg} alt="user prof pic" />
-      <input
-        type="text"
-        value={newUserName}
-        name="username"
-        onChange={changeHandler}
-      />
-      <input
-        type="text"
-        value={newUserEmail}
-        name="userEmail"
-        onChange={changeHandler}
-      />
-      <input
-        type="text"
-        value={newUserFullname}
-        name="userFullname"
-        onChange={changeHandler}
-      />
-      <input type="file" name="profPic" onChange={changeHandler} />
-      <button onClick={submitHandler}>Submit</button>
+      <div className={styles.imgContainer}>
+        <img
+          src={newUserImg ? URL.createObjectURL(newUserImg) : userImg}
+          alt="user prof pic"
+          className={styles.image}
+        />
+        <PublishIcon
+          onClick={() => fileInput.current.click()}
+          className={styles.uploadBtn}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="username" className={styles.label}>
+          Username
+        </label>
+        <input
+          type="text"
+          value={newUserName}
+          name="username"
+          onChange={changeHandler}
+          className={styles.input}
+          placeholder="Username"
+        />
+        <label htmlFor="userEmail" className={styles.label}>
+          Email
+        </label>
+        <input
+          type="text"
+          value={newUserEmail}
+          name="userEmail"
+          onChange={changeHandler}
+          className={styles.input}
+          placeholder="Email"
+        />
+        <label htmlFor="userFullname" className={styles.label}>
+          Full Name
+        </label>
+        <input
+          type="text"
+          value={newUserFullname}
+          name="userFullname"
+          onChange={changeHandler}
+          className={styles.input}
+          placeholder="Full Name"
+        />
+        <input
+          type="file"
+          name="profPic"
+          onChange={changeHandler}
+          style={{ display: "none" }}
+          ref={fileInput}
+        />
+        <button onClick={submitHandler} className={styles.submitBtn}>
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,70 @@
 .container {
   max-width: 124rem;
   margin: 10rem auto 4rem;
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1260px) {
   .container {
     max-width: 90%;
   }
+}
+
+.imgContainer {
+  margin: 5rem;
+  position: relative;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  width: 20rem;
+  height: 20rem;
+  object-fit: contain;
+  background: #e2e1e1;
+  border-radius: 50%;
+}
+
+.uploadBtn {
+  cursor: pointer;
+  color: #f6f5f5;
+  font-size: 4rem;
+  position: absolute;
+  right: 0;
+  bottom: -3%;
+}
+
+.label {
+  color: #f6f5f5;
+  font-size: 1.6rem;
+}
+
+.input {
+  width: 50rem;
+  height: 3rem;
+  border: none;
+  border-radius: 3px;
+  padding: 0 1rem;
+  margin: 1rem 0 2rem;
+  outline: none;
+}
+
+.submitBtn {
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  border-radius: 3px;
+  margin: 1rem 0;
+  cursor: pointer;
+  outline: none;
+  color: #3e3639;
+  background-color: #e2e1e1;
+}
+
+.submitBtn:hover {
+  background-color: #f6f5f5;
 }
