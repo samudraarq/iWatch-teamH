@@ -6,11 +6,14 @@ import DropDownMenu from "./DropDownMenu";
 import Search from "./Search/Search";
 import useWindowSize from "../Hooks/useWindowResize";
 import { UserContext } from "../Context/UserContext";
+import { useHistory } from "react-router-dom";
 
 const Navbar = ({ scrollChange }) => {
   // const [isLogin, setIsLogin] = useState(false);
   // const [token, setToken] = useState(localStorage.getItem("token"));
   const [smallDevice, setSmallDevice] = useState(false);
+
+  const history = useHistory();
 
   const {
     isLogin,
@@ -73,6 +76,7 @@ const Navbar = ({ scrollChange }) => {
     setUserImg("");
     setUserFullname("");
     setIsLogin(false);
+    history.push("/");
   };
 
   // Change navbar when scrolling
