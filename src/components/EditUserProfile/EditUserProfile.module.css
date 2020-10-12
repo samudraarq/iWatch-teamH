@@ -24,7 +24,7 @@
 .image {
   width: 20rem;
   height: 20rem;
-  object-fit: contain;
+  object-fit: cover;
   background: #e2e1e1;
   border-radius: 50%;
 }
