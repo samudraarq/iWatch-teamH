@@ -94,7 +94,7 @@ export default function MenuListComposition({ handleLogOut }) {
                   className={styles.dropdown}
                 >
                   <MenuItem onClick={openEdit}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
                   <MenuItem onClick={handleLogOut}>Logout</MenuItem>
                 </MenuList>
               </ClickAwayListener>
