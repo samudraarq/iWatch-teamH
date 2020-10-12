@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./DetailsHeader.module.css";
 import YouTubeIcon from "@material-ui/icons/YouTube";
-import AddIcon from "@material-ui/icons/Add";
+// import AddIcon from "@material-ui/icons/Add";
 import { useParams } from "react-router-dom";
 import { Rating } from "@material-ui/lab";
 
@@ -74,7 +74,7 @@ const DetailsHeader = ({ movie }) => {
               </div>
             </a>
           )}
-          <button
+          {/* <button
             className={styles.watchList}
             onClick={() => console.log("clicked")}
           >
@@ -82,7 +82,7 @@ const DetailsHeader = ({ movie }) => {
               <AddIcon className={styles.icon} />
               <span>Add to Watchlist</span>
             </div>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
