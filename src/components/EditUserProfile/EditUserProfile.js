@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import PublishIcon from "@material-ui/icons/Publish";
-import { CircularProgress } from "@material-ui/core";
 import { UserContext } from "../Context/UserContext";
 import styles from "./EditUserProfile.module.css";
 
@@ -54,6 +53,7 @@ const EditUserProfile = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    setUploadProgress(0);
     setSuccessUpdate(false);
 
     const formData = new FormData();
@@ -152,11 +152,14 @@ const EditUserProfile = () => {
         <button onClick={submitHandler} className={styles.submitBtn}>
           Submit
         </button>
-        <CircularProgress
-          value={uploadProgress}
-          variant="static"
-          className={styles.uploadProgress}
-        />
+        <div className={styles.progress}>
+          <div
+            className={styles.progressDone}
+            style={{ width: `${uploadProgress}%`, opacity: "1" }}
+          >
+            {uploadProgress >= 1 && `${uploadProgress}%`}
+          </div>
+        </div>
         {successUpdate && (
           <span className={styles.success}>Success update profile!</span>
         )}

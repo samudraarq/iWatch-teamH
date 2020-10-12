@@ -80,6 +80,29 @@
   color: #f6f5f5;
 }
 
+.progress {
+  background-color: #cecccc;
+  border-radius: 2rem;
+  position: relative;
+  margin: 1.5rem 0;
+  height: 2rem;
+  width: 30rem;
+}
+
+.progressDone {
+  background: linear-gradient(to left, #fa7517, #ee4818);
+  box-shadow: 0 2px 2px -3px #fa7517, 0 1px 3px #fa7517;
+  border-radius: 2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  transition: 1s ease 0.3s;
+}
+
 @media only screen and (max-width: 1100px) {
   .imgContainer {
     margin: 5rem;
