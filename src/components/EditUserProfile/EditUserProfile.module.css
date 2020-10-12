@@ -1,8 +1,10 @@
 .container {
   max-width: 124rem;
+  height: 80vh;
   margin: 10rem auto 4rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1260px) {
@@ -12,7 +14,7 @@
 }
 
 .imgContainer {
-  margin: 5rem;
+  margin: 10rem;
   position: relative;
 }
 
@@ -71,4 +73,25 @@
 
 .uploadProgress {
   display: inline-block;
+}
+
+.success {
+  font-size: 1.6rem;
+  color: #f6f5f5;
+}
+
+@media only screen and (max-width: 1100px) {
+  .imgContainer {
+    margin: 5rem;
+  }
+
+  .input {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    flex-direction: column;
+  }
 }

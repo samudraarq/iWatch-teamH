@@ -12,6 +12,7 @@ const EditUserProfile = () => {
   const [newUserImg, setNewUserImg] = useState(null);
 
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [successUpdate, setSuccessUpdate] = useState(false);
 
   const {
     userId,
@@ -53,6 +54,8 @@ const EditUserProfile = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    setSuccessUpdate(false);
+
     const formData = new FormData();
     formData.append("username", newUserName);
     formData.append("email", newUserEmail);
@@ -67,10 +70,6 @@ const EditUserProfile = () => {
         formData,
         {
           onUploadProgress: (ProgressEvent) => {
-            console.log(
-              "Upload Progress",
-              Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
-            );
             setUploadProgress(
               Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
             );
@@ -87,6 +86,7 @@ const EditUserProfile = () => {
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("image", res.data.image);
         localStorage.setItem("full_name", res.data.full_name);
+        setSuccessUpdate(true);
       })
       .catch((err) => {
         console.log(err);
@@ -157,6 +157,9 @@ const EditUserProfile = () => {
           variant="static"
           className={styles.uploadProgress}
         />
+        {successUpdate && (
+          <span className={styles.success}>Success update profile!</span>
+        )}
       </div>
     </div>
   );
